@@ -24,7 +24,7 @@ This extension unconditionally depends on the pre-loaded presence of the followi
 * spl
 
 
-If configured ```--with-http-shared-deps``` (default) it requires on the pre-loaded presence of the following extensions, as long as they where available at build time:
+If configured ```--with-http-shared-deps``` (default) it requires on the pre-loaded presence of the following extensions, as long as they were available at build time:
 
 * hash
 * iconv
@@ -32,7 +32,7 @@ If configured ```--with-http-shared-deps``` (default) it requires on the pre-loa
 
 ## Conflicts:
 
-pecl/http-v2 conflicts with thw following extensions:
+pecl/http-v2 conflicts with the following extensions:
 
 * http-v1
 * event
