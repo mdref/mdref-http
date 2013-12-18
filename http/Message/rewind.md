@@ -9,6 +9,7 @@ None.
 ## Example:
 
     <?php
+    $types = ["message", "request", "response"];
     $message = new http\Message("GET / HTTP/1.1\n".
         "HTTP/1.1 200\n".
         "GET / HTTP/1.0\n".
@@ -16,7 +17,7 @@ None.
     );
     foreach ($message as $key => $msg) {
         printf("Key %d is a %8s: %s\n",
-            $key, ["message", "request", "response"][$msg->getType()],
+            $key, $types[$msg->getType()],
             $msg->getInfo()
         );
     }

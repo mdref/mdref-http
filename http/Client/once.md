@@ -32,6 +32,7 @@ None.
         printf("%s returned %d\n", $res->getTransferInfo("effective_url"),
             $res->getResponseCode());
     }
+	?>
 
 Yields:
 
