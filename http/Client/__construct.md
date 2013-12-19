@@ -12,7 +12,7 @@ Persisted resources identified by $persistent_handle_id will be re-used if avail
 * string $persistent_handle_id = NULL  
   If supplied, created curl handles will be persisted with this identifier for later reuse.
 
-# Throws:
+## Throws:
 
 * http\Exception\InvalidArgumentException
 * http\Exception\UnexpectedValueException
