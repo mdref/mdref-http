@@ -35,7 +35,7 @@ If configured ```--with-http-shared-deps``` (default) it requires on the pre-loa
 pecl/http-v2 conflicts with the following extensions:
 
 * http-v1
-* event
+* event (only until <= 2.0.3)
 
 ## INI Directives:
 
@@ -54,3 +54,9 @@ The http extension registers the ```http.*``` namespace for its stream filters. 
   Decode a stream encoded with deflate/zlib/gzip encoding.
 * http.deflate  
   Encode a stream with deflate/zlib/gzip encoding.
+
+## Changelog:
+
+Version | Change
+--------|-------
+2.0.4   | Dropped the pecl/event conflict.
