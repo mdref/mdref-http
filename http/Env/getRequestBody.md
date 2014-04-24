@@ -5,7 +5,7 @@ Retreive the current HTTP request's body.
 ## Parameters:
 
 * Optional string $body_class_name  
-  A user class extending http\Body.
+  A user class extending http\Message\Body.
 
 ## Returns:
 
