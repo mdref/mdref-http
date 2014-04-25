@@ -1,4 +1,4 @@
-# mixed http\Response::getTransferInfo([string $name = NULL])
+# mixed http\Client\Response::getTransferInfo([string $name = NULL])
 
 Retrieve transfer related information after the request has completed.
 See http\Client::getTransferInfo().
