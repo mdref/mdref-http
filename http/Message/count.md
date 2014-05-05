@@ -8,4 +8,4 @@ None.
 
 ## Returns:
 
-* int, thre count of messages in the chain above the current message.
+* int, the count of messages in the chain above the current message.
