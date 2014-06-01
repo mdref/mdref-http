@@ -1,6 +1,6 @@
 # void http\Url::__construct([mixed $old_url = NULL[, mixed $new_url = NULL[, int $flags = http\Url::FROM_ENV]]])
 
-Create an instance of an http\URL.
+Create an instance of an http\Url.
 
 ## Params:
 
