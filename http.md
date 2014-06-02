@@ -24,7 +24,7 @@ This extension unconditionally depends on the pre-loaded presence of the followi
 * spl
 
 
-If configured ```--with-http-shared-deps``` (default) it requires on the pre-loaded presence of the following extensions, as long as they were available at build time:
+If configured ```--with-http-shared-deps``` (default) it depends on the pre-loaded presence of the following extensions, as long as they were available at build time:
 
 * hash
 * iconv
