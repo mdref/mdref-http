@@ -1,6 +1,6 @@
 # string http\Message\Body::getBoundary()
 
-Retrieve any boundary of tehe message body.
+Retrieve any boundary of the message body.
 See http\Message::splitMultipartBody().
 
 ## Params:
