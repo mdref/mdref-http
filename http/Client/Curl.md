@@ -2,6 +2,12 @@
 
 The http\Client\Curl namespace holds option value constants specific to the curl driver of the http\Client.
 
+## Changelog
+
+Version | Change
+--------|-------
+2.1.0   | Added $dns_interface, $dns_local_ip4, $dns_local_ip6 options.
+
 ## Constants:
 
 ### HTTP Protocol Version
@@ -75,6 +81,7 @@ The http\Client\Curl namespace holds option value constants specific to the curl
 
 ## Options:
 
+The option names used here are more or less derived from the corresponding CURLOPT_* names.
 ### HTTP
 
 * int $protocol  
@@ -106,8 +113,14 @@ The http\Client\Curl namespace holds option value constants specific to the curl
 * array $resolve  
   A list of HOST:PORT:ADDRESS mappings which pre-populate the DNS cache. Available if libcurl is v7.21.3 or more recent.
 * string $dns_servers  
-  Comma separated list of custom DNS servers of the form HOST[:PORT]. Available if libcurl is v7.24.0 or more recent.
-  
+  Comma separated list of custom DNS servers of the form HOST[:PORT]. Available if libcurl is v7.24.0 or more recent and has built-in c-ares support.
+* string $dns_interface
+  The name of the network interface ***name*** that the DNS resolver should bind to. Available if libcurl is v7.33.0 or more recent and has built-in c-ares support.
+* string $dns_local_ip4
+  The local IPv4 ***address*** that the resolver should bind to. Available if libcurl is v7.33.0 or more recent and has built-in c-ares support.
+* string $dns_local_ip6
+  The local IPv6 ***address*** that the resolver should bind to. Available if libcurl is v7.33.0 or more recent and has built-in c-ares support.
+
 ### Limits
 
 * int $low_speed_limit  
@@ -242,4 +255,3 @@ The http\Client\Curl namespace holds option value constants specific to the curl
     File with the concatenation of CRL in PEM format. Available if libcurl was built with OpenSSL support.
   * bool $certinfo  
     Enable gathering of SSL certificate chain information. Available if libcurl is v7.19.1 or more recent.
-

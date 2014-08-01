@@ -1,6 +1,6 @@
 # class http\Client implements SplSubject, Countable
 
-The HTTP client. The only driver currently supported is http\Client\Curl.
+The HTTP client. See http\Client\Curl's [options](http/Client/Curl#Options:) which is the only driver currently supported.
 
 ## Examples:
 
