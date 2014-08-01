@@ -6,7 +6,7 @@ The http\Client\Curl namespace holds option value constants specific to the curl
 
 Version | Change
 --------|-------
-2.1.0   | Added $dns_interface, $dns_local_ip4, $dns_local_ip6 options.
+2.1.0   | Added $dns_interface, $dns_local_ip4, $dns_local_ip6 options, $expect_100_timeout.
 
 ## Constants:
 
@@ -153,7 +153,9 @@ The option names used here are more or less derived from the corresponding CURLO
   Seconds to wait before sending keepalive probes. Available if libcurl is v7.25.0 or more recent.
 * int $tcp_keepintvl  
   Interval in seconds to wait between sending keepalive probes. Available if libcurl is v7.25.0 or more recent.
-
+* bool $tcp_nodelay  
+  Disable [Nagle's algotrithm](http://tools.ietf.org/html/rfc896).
+  
 ### Authentication
 
 * string $httpauth  
@@ -216,6 +218,8 @@ The option names used here are more or less derived from the corresponding CURLO
   Seconds the complete transfer may take.
 * float $connecttimeout  
   Seconds the connect may take.
+* float $expect_100_timeout  
+  Senconds to wait for the server to send a response to "Expect: 100-Continue" before just proceeding with the request. Available if libcurl is v7.36.0 or more recent.
 
 ### SSL
 
