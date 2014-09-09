@@ -20,7 +20,7 @@ Get transfer related informatioin for a running or finished request.
 
 The transfer info might look as follows:
 
-    object(stdClass)#6 (36) {
+    object(stdClass)#6 (37) {
       ["effective_url"]=>
       string(16) "https://php.net/"
       ["response_code"]=>
@@ -100,6 +100,8 @@ The transfer info might look as follows:
       ["certinfo"]=>
       array(0) {
       }
+      ["curlcode"]=>
+      int(0)
       ["error"]=>
       string(0) ""
     }
