@@ -7,6 +7,7 @@ The http\Client\Curl namespace holds option value constants specific to the curl
 Version | Change
 --------|-------
 2.1.0   | Added $dns_interface, $dns_local_ip4, $dns_local_ip6 options, $expect_100_timeout.
+2.1.2   | Added request option constants:<br> http\Client\Curl::POSTREDIR_303,<br> http\Client\Curl::AUTH_SPNEGO,<br> http\Client\Curl::SSL_VERSION_TLSv1_0,<br> http\Client\Curl::SSL_VERSION_TLSv1_1 and<br> http\Client\Curl::SSL_VERSION_TLSv1_2 
 
 ## Constants:
 
@@ -21,12 +22,18 @@ Version | Change
   
 ### SSL Protocol Version
 
+* SSL_VERSION_TLSv1_0  
+  Use TLS v1.0 encryption.
+* SSL_VERSION_TLSv1_1  
+  Use TLS v1.1 encryption.
+* SSL_VERSION_TLSv1_2  
+  Use TLS v1.2 encryption.
 * SSL_VERSION_TLSv1  
-  Use TLSv1 encryption.
+  Use any TLS v1 encryption.
 * SSL_VERSION_SSLv2  
-  Use SSLv2 encryption.
+  Use SSL v2 encryption.
 * SSL_VERSION_SSLv3  
-  Use SSLv3 encryption.
+  Use SSL v3 encryption.
 * SSL_VERSION_ANY  
   Use any encryption.
 
@@ -51,6 +58,8 @@ Version | Change
   Use NTLM authentication.
 * AUTH_GSSNEG  
   Use GSS-Negotiate authentication.
+* AUTH_SPNEGO  
+  Use HTTP Netgotiate authentication (SPNEGO, RFC4559). Available if libcurl is v7.38.0 or more recent.
 * AUTH_ANY  
   Use any authentication.
 
@@ -75,6 +84,8 @@ Version | Change
   Keep POSTing on 301 redirects. Available if libcurl is v7.19.1 or more recent.
 * POSTREDIR_302  
   Keep POSTing on 302 redirects. Available if libcurl is v7.19.1 or more recent.
+* POSTREDIR_303  
+  Keep POSTing on 303 redirects. Available if libcurl is v7.19.1 or more recent.
 * POSTREDIR_ALL  
   Keep POSTing on any redirect. Available if libcurl is v7.19.1 or more recent.
 
