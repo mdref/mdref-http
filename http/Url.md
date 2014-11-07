@@ -2,6 +2,20 @@
 
 The http\Url class provides versatile means to parse, construct and manipulate URLs.
 
+## Changelog
+
+Version | Changes
+--------|--------
+2.2.0   | Added parser constants:<br> http\Url::PARSE_MBUTF8,<br> http\Url::PARSE_MBLOC (on systems with wide character support),<br>http\Url::PARSE_TOPCT,<br>http\Url::PARSE_TOIDN (with libidn support).
+
+## Backwards compatibility
+
+### New parser in v2.2.0
+
+PHP's [parse_url()](http://php.net/parse_url) is avoided since v2.2.0.
+
+Creating an empty url by `new http\Url(NULL, NULL, 0)` will not result in `http://localhost/` anymore but in an empty URL instead.
+
 ## Constants:
 
 * REPLACE  
@@ -30,23 +44,30 @@ The http\Url class provides versatile means to parse, construct and manipulate U
   Import initial URL parts from the SAPI environment.
 * SANITIZE_PATH  
   Whether to sanitize the URL path (consolidate double slashes, directory jumps etc.)
-
+* PARSE_MBUTF8  
+  Parse UTF-8 encododed multibyte sequences.
+* PARSE_MBLOC  
+  Parse locale encoded multibyte sequences (on systems with wide character support).
+* PARSE_TOIDN  
+  Parse and convert multibyte hostnames according to IDNA (with libidn support).
+* PARSE_TOPCT  
+  Percent encode multibyte sequences in the userinfo, path, query and fragment parts of the URL.
 
 ## Properties:
 
-* public $scheme = NULL  
+* public string $scheme = NULL  
   The URL's scheme.
-* public $user = NULL  
+* public string $user = NULL  
   Authenticating user.
-* public $pass = NULL  
+* public string $pass = NULL  
   Authentication password.
-* public $host = NULL  
+* public string $host = NULL  
   Hostname/domain.
-* public $port = NULL  
+* public string $port = NULL  
   Port.
-* public $path = NULL  
+* public string $path = NULL  
   URL path.
-* public $query = NULL  
+* public string $query = NULL  
   URL querystring.
-* public $fragment = NULL  
+* public string $fragment = NULL  
   URL fragment (hash).

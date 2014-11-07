@@ -17,7 +17,7 @@ The http\Header class provides methods to manipulate, match, negotiate and seria
 
 ## Properties:
 
-* public $name = NULL  
+* public string $name = NULL  
   The name of the HTTP header.
-* public $value = NULL  
+* public mixed $value = NULL  
   The value of the HTTP header.

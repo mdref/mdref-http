@@ -20,9 +20,9 @@ The http\QueryString class provides versatile facilities to retrieve, use and ma
 
 ## Properties:
 
-* private $instance = NULL  
+* private http\QueryString $instance = NULL  
   The global instance. See http\QueryString::getGlobalInstance().
-* private $queryArray = NULL  
-  The data array.
+* private array $queryArray = NULL  
+  The data.
 
 

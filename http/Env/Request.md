@@ -10,9 +10,9 @@ None.
 
 ## Properties:
 
-* protected $query = NULL  
+* protected http\QueryString $query = NULL  
   The request's query parameters. ($_GET)
-* protected $form = NULL  
+* protected http\QueryString $form = NULL  
   The request's form parameters. ($_POST)
-* protected $files = NULL  
+* protected array $files = NULL  
   The request's form uploads. ($_FILES)

@@ -125,18 +125,18 @@ The option names used here are more or less derived from the corresponding CURLO
   A list of HOST:PORT:ADDRESS mappings which pre-populate the DNS cache. Available if libcurl is v7.21.3 or more recent.
 * string $dns_servers  
   Comma separated list of custom DNS servers of the form HOST[:PORT]. Available if libcurl is v7.24.0 or more recent and has built-in c-ares support.
-* string $dns_interface
+* string $dns_interface  
   The name of the network interface ***name*** that the DNS resolver should bind to. Available if libcurl is v7.33.0 or more recent and has built-in c-ares support.
-* string $dns_local_ip4
+* string $dns_local_ip4  
   The local IPv4 ***address*** that the resolver should bind to. Available if libcurl is v7.33.0 or more recent and has built-in c-ares support.
-* string $dns_local_ip6
+* string $dns_local_ip6  
   The local IPv6 ***address*** that the resolver should bind to. Available if libcurl is v7.33.0 or more recent and has built-in c-ares support.
 
 ### Limits
 
 * int $low_speed_limit  
   Minimum speed in bytes per second.
-* int $low_speed_time
+* int $low_speed_time  
   Maximum time in seconds the transfer can be below $low_speed_limit before cancelling.
 * int $maxfilesize  
   Maximum download size.

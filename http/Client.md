@@ -103,11 +103,11 @@ The HTTP client. See http\Client\Curl's [options](http/Client/Curl#Options:) whi
 
 ## Properties:
 
-* private $observers = NULL  
-  SplObjectStorage, attached observers.
-* protected $options = NULL  
-  Array of set options.
-* protected $history = NULL  
-  http\Message request/response history.
-* public $recordHistory = false  
-  Boolean flag whether to record history in http\Client::$history.
+* private SplObjectStorage $observers = NULL  
+  Attached observers.
+* protected array $options = NULL  
+  Set options.
+* protected http\Message $history = NULL  
+  Request/response history.
+* public bool $recordHistory = false  
+  Whether to record history in http\Client::$history.

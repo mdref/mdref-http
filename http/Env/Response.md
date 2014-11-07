@@ -19,21 +19,21 @@ See http\Message for inherited members.
 
 ## Properties:
 
-* protected $request = NULL  
-  A http\Env\Request instance which overrides the environments default request.
-* protected $contentType = NULL  
+* protected http\Env\Request $request = NULL  
+  A request instance which overrides the environments default request.
+* protected string $contentType = NULL  
   The response's MIME content type.
-* protected $contentDisposition = NULL  
+* protected string $contentDisposition = NULL  
   The response's MIME content disposition.
-* protected $contentEncoding = NULL  
+* protected int $contentEncoding = NULL  
   See http\Env\Response::CONTENT_ENCODING_* constants.
-* protected $cacheControl = NULL  
+* protected string $cacheControl = NULL  
   How the client should treat this response in regards to caching.
-* protected $etag = NULL  
+* protected string $etag = NULL  
   A custom ETag.
-* protected $lastModified = NULL  
+* protected int $lastModified = NULL  
   A "Last-Modified" time stamp.
-* protected $throttleDelay = NULL  
+* protected int $throttleDelay = NULL  
   Any throttling delay.
-* protected $throttleChunk = NULL  
+* protected int $throttleChunk = NULL  
   The chunk to send every $throttleDelay seconds.
