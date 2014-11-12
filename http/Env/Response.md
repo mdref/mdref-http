@@ -4,6 +4,12 @@ The http\Env\Response class' instances represent the server's current HTTP respo
 
 See http\Message for inherited members.
 
+## Changelog:
+
+Version | Changes
+--------|--------
+2.2.0   | Added http\Env\Response::setCookie() and http\Env\Response::$cookies.
+
 ## Constants:
 
 * CONTENT_ENCODING_NONE  
@@ -37,3 +43,5 @@ See http\Message for inherited members.
   Any throttling delay.
 * protected int $throttleChunk = NULL  
   The chunk to send every $throttleDelay seconds.
+* protected array $cookies = NULL  
+  The response's cookies.
