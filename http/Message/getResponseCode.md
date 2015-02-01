@@ -1,7 +1,7 @@
 # int http\Message::getResponseCode()
 
 Retrieve the response code of the message.
-See http\Message::setResponseCode() and http\Massage::getResponseStatus().
+See http\Message::setResponseCode() and http\Message::getResponseStatus().
 
 ## Params:
 
