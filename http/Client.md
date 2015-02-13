@@ -2,6 +2,12 @@
 
 The HTTP client. See http\Client\Curl's [options](http/Client/Curl#Options:) which is the only driver currently supported.
 
+## Changelog:
+
+Version | Change
+--------|-------
+2.3.0   | Deprecated methods:<br>http\Client::enablePipelining() and <br>http\Client::enableEvents().<br>Added Methods:<br>http\Client::configure(),<br>http\Client::getAvailableConfiguration() and<br>http\Client::getAvailableOptions().
+
 ## Examples:
 
 ### Sending a simple GET request:

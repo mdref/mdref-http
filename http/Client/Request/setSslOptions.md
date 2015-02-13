@@ -1,7 +1,7 @@
 # http\Client\Request http\Client\Request::setSslOptions([array $ssl_options = NULL])
 
 Specifically set SSL options.
-See http\Client\Request::setOptions() and http\Client\Curl::$ssl options.
+See http\Client\Request::setOptions() and http\Client\Curl\$ssl options.
 
 ## Params:
 

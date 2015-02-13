@@ -6,8 +6,9 @@ The http\Client\Curl namespace holds option value constants specific to the curl
 
 Version | Change
 --------|-------
-2.1.0   | Added $dns_interface, $dns_local_ip4, $dns_local_ip6 options, $expect_100_timeout.
-2.1.2   | Added request option constants:<br> http\Client\Curl::POSTREDIR_303,<br> http\Client\Curl::AUTH_SPNEGO,<br> http\Client\Curl::SSL_VERSION_TLSv1_0,<br> http\Client\Curl::SSL_VERSION_TLSv1_1 and<br> http\Client\Curl::SSL_VERSION_TLSv1_2 
+2.1.0   | Added $dns_interface, $dns_local_ip4, $dns_local_ip6 and $expect_100_timeout options.
+2.1.2   | Added request option constants:<br> http\Client\Curl\POSTREDIR_303,<br> http\Client\Curl\AUTH_SPNEGO,<br> http\Client\Curl\SSL_VERSION_TLSv1_0,<br> http\Client\Curl\SSL_VERSION_TLSv1_1 and<br> http\Client\Curl\SSL_VERSION_TLSv1_2 
+2.3.0   | Added $pinned_publickey, $ltsauth and $verifystatus $ssl options.<br>Added $proxyheader and $unix_socket_path options.<br>Added request option constants:<br>http\Client\Curl\HTTP_VERSION_2_0 and<br>http\Client\Curl\TLS_AUTH_SRP.
 
 ## Constants:
 
@@ -17,6 +18,8 @@ Version | Change
   Use HTTP/1.0 protocol version.
 * HTTP_VERSION_1_1  
   Use HTTP/1.1 protocol version.
+* HTTP_VERSION_2_0  
+  Use HTTP/2 protocol version. Available if libcurl is v7.33.0 or more recent and was built with nghttp2 support.
 * HTTP_VERSION_ANY  
   Use any HTTP protocol version.
   
@@ -36,6 +39,11 @@ Version | Change
   Use SSL v3 encryption.
 * SSL_VERSION_ANY  
   Use any encryption.
+
+### TLS Auth Types
+
+* TLS_AUTH_SRP  
+  Use TLS SRP authentication. Available if libcurl is v7.21.4 or more recent and was built with gnutls or openssl with TLS-SRP support.
 
 ### DNS IP Version
 
@@ -96,31 +104,33 @@ The option names used here are more or less derived from the corresponding CURLO
 ### HTTP
 
 * int $protocol  
-  The HTTP protocol version. See http\Client\Curl::HTTP_VERSION_* constants.
+  The HTTP protocol version. See http\Client\Curl\HTTP_VERSION_* constants.
 
 ### Proxies
 
 * string $proxyhost  
   The hostname of the proxy.
 * int $proxytype  
-  See http\Client\Curl::PROXY_* constants.
+  See http\Client\Curl\PROXY_* constants.
 * int $proxyport  
   The port number of the proxy.
 * string $proxyauth  
   user:password
 * int $proxyauthtype  
-  See http\Client\Curl::AUTH_* constants.
+  See http\Client\Curl\AUTH_* constants.
 * bool $proxytunnel  
   Tunnel all operations through the proxy.
 * string $noproxy  
   Comma separated list of hosts where no proxy should be used. Available if libcurl is v7.19.4 or more recent.
+* array $proxyheader  
+  List of key/value pairs of headers which should only be sent to a proxy. Available if libcurl is v7.37.0 or more recent.
 
 ### DNS
 
 * int $dns_cache_timeout  
   Resolved hosts will be kept fot this number of seconds.
 * int $ipresolve  
-  See http\Client\Curl::IPRESOLVE_* constants.
+  See http\Client\Curl\IPRESOLVE_* constants.
 * array $resolve  
   A list of HOST:PORT:ADDRESS mappings which pre-populate the DNS cache. Available if libcurl is v7.21.3 or more recent.
 * string $dns_servers  
@@ -166,13 +176,15 @@ The option names used here are more or less derived from the corresponding CURLO
   Interval in seconds to wait between sending keepalive probes. Available if libcurl is v7.25.0 or more recent.
 * bool $tcp_nodelay  
   Disable [Nagle's algotrithm](http://tools.ietf.org/html/rfc896).
-  
+* string $unix_socket_path  
+  Connect to the webserver listening at $unix_socket_path instead of opening a TCP connection to it. Available if libcurl is v7.40.0 or more recent.
+
 ### Authentication
 
 * string $httpauth  
   user:password
 * int $httpauthtype  
-  See http\Client\Curl::AUTH_* constants.
+  See http\Client\Curl\AUTH_* constants.
 
 ### Redirection
 
@@ -181,7 +193,7 @@ The option names used here are more or less derived from the corresponding CURLO
 * bool $unrestricted_auth  
   Whether to keep sending authentication credentials on redirects to different hosts.
 * int $postredir  
-  See http\Client\Curl::POSTREDIR_* constants. Available if libcurl is v7.19.1 or more recent.
+  See http\Client\Curl\POSTREDIR_* constants. Available if libcurl is v7.19.1 or more recent.
 
 ### Retries
 
@@ -249,7 +261,7 @@ The option names used here are more or less derived from the corresponding CURLO
   * string $engine  
     Crypto engine to use for the private key.
   * int $version  
-    See http\Client\Curl::SSL_VERSION_* constants.
+    See http\Client\Curl\SSL_VERSION_* constants.
   * bool $verifypeer  
     Whether to apply peer verification.
   * bool $verifyhost  
@@ -270,3 +282,36 @@ The option names used here are more or less derived from the corresponding CURLO
     File with the concatenation of CRL in PEM format. Available if libcurl was built with OpenSSL support.
   * bool $certinfo  
     Enable gathering of SSL certificate chain information. Available if libcurl is v7.19.1 or more recent.
+  * string $pinned_publickey  
+    File with a public key to pin. Available if libcurl is v7.39.0 or more recent.
+  * int $tlsauthtype  
+    TLS_AUTH_* constant. Available if libcurl is v7.21.4 or more recent.
+  * string $tlsauthuser  
+    TLS-SRP username. Available if libcurl is v7.21.4 or more recent.
+  * string $lsauthpass  
+    TLS-SRP password. Available if libcurl is v7.21.4 or more recent.
+  * bool $verifystatus  
+    Enable OCSP. Available if libcurl is v7.41.0 or more recent and was build with openssl, gnutls or nss support.
+
+## Configuration:
+
+* int $maxconnects  
+  Size of the connection cache.
+* int $max_host_connections  
+  Maximum number of connections to a single host. Available if libcurl is v7.30.0 or more recent.
+* int $max_pipeline_length  
+  Maximum number of requests in a pipeline. Available if libcurl is v7.30.0 or more recent.
+* int $max_total_connections  
+  Maximum number of simultaneous open connections of this client. Available if libcurl is v7.30.0 or more recent.
+* bool $pipelining  
+  Whether to enable HTTP/1.1 pipelining.
+* int $chunk_length_penalty_size  
+  Chunk length threshold for pipelining; no more requests on this pipeline if exceeded. Available if libcurl is v7.30.0 or more recent.
+* int $content_length_penalty_size  
+  Size threshold for pipelining; no more requests on this pipeline if exceeded. Available if libcurl is v7.30.0 or more recent.
+* array $pipelining_server_bl  
+  Simple list of server software names to blacklist for pipelining. Available if libcurl is v7.30.0 or more recent.
+* array $pipelining_site_bl  
+  Simple list of server host names to blacklist for pipelining. Available if libcurl is v7.30.0 or more recent.
+* bool $use_eventloop  
+  Whether to use an event loop. Available if pecl/http was built with libevent support.

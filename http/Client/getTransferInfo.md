@@ -80,9 +80,6 @@ The transfer info might look as follows:
         [2]=>
         string(7) "dynamic"
       }
-      ["cookies"]=>
-      array(0) {
-      }
       ["redirect_url"]=>
       string(15) "http://php.net/"
       ["primary_ip"]=>
