@@ -17,6 +17,36 @@ This extension is hosted at [PECL](http://pecl.php.net) and can be installed wit
 
 ## Dependencies:
 
+pecl/http depends on a number of system libraries and PHP extensions for special features.
+
+#### Required system libraries:
+
+The following system libraries are required to build this extension:
+
+=zlib=
+	Provides gzip/zlib/deflate encoding.  
+	Install on Debian: `apt-get install zlib1g-dev`
+
+
+#### Optional system libraries:
+
+The following system libraries are optional and provide additional features:
+
+=libidn=
+	Provides IDNA support in URLs.  
+	Install on Debian: `apt-get install libidn11-dev`
+
+=libcurl=
+	Provides HTTP request functionality.  
+	Install on Debian: `apt-get install libcurl4-openssl-dev`  
+	Note: There are usually different styles of SSL support for libcurl available, so you can replace 'openssl' in the above command f.e. with 'nss' or 'gnutls'.
+
+=libevent=
+	Eventloop support for the HTTP client.  
+	Install on Debian: `apt-get install libevent-dev`
+
+### PHP extensions:
+
 This extension unconditionally depends on the pre-loaded presence of the following PHP extensions:
 
 * raphf
@@ -29,6 +59,20 @@ If configured ```--with-http-shared-deps``` (default) it depends on the pre-load
 * hash
 * iconv
 * json
+
+Please ensure that all extension on which pecl/http depends, are loaded before it, e.g in your `php.ini`:
+
+	; obligatory deps
+	extension = raphf.so
+	extension = propro.so
+	
+	; if shared deps were enabled
+	extension = hash.so
+	extension = iconv.so
+	extension = json.so
+	
+	; finally load pecl/http
+	extension = http.so
 
 ## Conflicts:
 
