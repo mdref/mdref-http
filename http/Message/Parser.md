@@ -43,3 +43,6 @@ The parser which is underlying http\Message.
   Finished parsing the body.
 * STATE_DONE  
   Finished parsing the message.
+
+> ***NOTE:***  
+> Most of this states won't be returned to the user, because the parser immediately jumps to the next expected state.
