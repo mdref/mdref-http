@@ -1,6 +1,7 @@
 # static array http\Header::parse(string $header[, string $header_class = NULL])
 
 Parse HTTP headers.
+See also http\Header\Parser.
 
 ## Params:
 
