@@ -1,4 +1,4 @@
-# void http\QueryString::unseralize(string $serialized)
+# void http\QueryString::unserialize(string $serialized)
 
 Implements Serializable.
 
