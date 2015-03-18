@@ -62,7 +62,7 @@ If configured ```--with-http-shared-deps``` (default) it depends on the pre-load
 
 * hash
 * iconv
-* json
+* json (only until < 2.4.0)
 
 Please ensure that all extension on which pecl/http depends, are loaded before it, e.g in your `php.ini`:
 
@@ -108,3 +108,4 @@ The http extension registers the ```http.*``` namespace for its stream filters. 
 Version | Change
 --------|-------
 2.0.4   | Dropped the pecl/event conflict.
+2.4.0   | Dropped the ext/json dependency.
