@@ -38,6 +38,16 @@ The following system libraries are optional and provide additional features:
 	Minimum version: none  
 	Install on Debian: `apt-get install libidn11-dev`
 
+=libidn2=
+	Provides IDNA support in URLs (fallback if libidn is not available).  
+	Minimum version: none  
+	Install on Debian: `apt-get install libidn2-0-dev`
+
+=libicu=
+	Provides IDNA support in URLs (fallback if libidn is not available).  
+	Minimum version: none  
+	Install on Debian: `apt-get install libicu-dev`
+
 =libcurl=
 	Provides HTTP request functionality.  
 	Minimum version: 7.18.2  
@@ -109,3 +119,4 @@ Version | Change
 --------|-------
 2.0.4   | Dropped the pecl/event conflict.
 2.4.0   | Dropped the ext/json dependency.
+2.4.2   | Added libidn2 and libicu as fallback for IDNA support.
