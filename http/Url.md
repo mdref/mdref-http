@@ -2,7 +2,7 @@
 
 The http\Url class provides versatile means to parse, construct and manipulate URLs.
 
-## Changelog
+## Changelog:
 
 Version | Changes
 --------|--------

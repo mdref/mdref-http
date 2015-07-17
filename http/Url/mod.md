@@ -1,4 +1,4 @@
-# http\Url http\Url::mod(mixed $parts[, int $flags = http\Url::JOIN_PATH|http\Url::JOIN_QUERY)
+# http\Url http\Url::mod(mixed $parts[, int $flags = http\Url::JOIN_PATH|http\Url::JOIN_QUERY|http\Url::SANITIZE_PATH)
 
 Clone this URL and apply $parts to the cloned URL.
 
@@ -8,7 +8,7 @@ Clone this URL and apply $parts to the cloned URL.
 
 * mixed $parts  
   New URL parts.
-* Optional int $flags = http\Url::JOIN_PATH|http\Url::JOIN_QUERY  
+* Optional int $flags = http\Url::JOIN_PATH|http\Url::JOIN_QUERY|http\Url::SANITIZE_PATH  
   Modus operandi of URL construction. See http\Url constants.
 
 ## Returns:
@@ -17,6 +17,11 @@ Clone this URL and apply $parts to the cloned URL.
 
 ## Throws:
 
-
 * http\Exception\InvalidArgumentException
 * http\Exception\BadUrlException
+
+## Changelog:
+
+Version | Changes
+--------|--------
+2.5.0   | Added http\Url::SANITIZE_PATH to default flags.
