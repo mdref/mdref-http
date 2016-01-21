@@ -1,4 +1,4 @@
-# pecl/http v2
+# pecl/http
 
 ## About:
 
