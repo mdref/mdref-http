@@ -3,8 +3,13 @@
 Add another http\Client\Request to the request queue.
 If the optional callback $cb returns true, the request will be automatically dequeued.
 
-> ***Note:***
-> The http\Client\Response object resulting from the request is always stored in an internal storage, __even__ when callback is used, because of that, the memory may grow up significantly if you send many many requests using the same http\Client instance... In that case, to keep memory as low as possible, it is advised to call http\Client::getResponse() in the callback or to call http\Client::reset() after each http\Client::send() to free some ressources.
+> ***Note:***  
+> The http\Client\Response object resulting from the request is always stored 
+> internally to be retreived at a later time, __even__ when $cb is used.
+> 
+> If you are about to send a lot of requests and do __not__ need the response
+> after executing the callback, you can use http\Client::getResponse() within
+> the callback to keep the memory usage level as low as possible.
 
 See http\Client::dequeue() and http\Client::send().
 
