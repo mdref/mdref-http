@@ -209,7 +209,7 @@ The option names used here are more or less derived from the corresponding CURLO
 * bool $autoreferer  
   Whether to automatically send referers.
 * string $useragent  
-  Custom User-Agent header.
+  Custom User-Agent header. Setting this option to NULL will use the default user agent, use the empty string to prevent this header being sent at all.
 * string $etag  
   Custom ETag.
 * bool $compress  
