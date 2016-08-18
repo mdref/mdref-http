@@ -22,9 +22,9 @@ Parse, interpret and compose HTTP (header) parameters.
   Parse sub dimensions indicated by square brackets.
 * PARSE_QUERY  
   Parse URL querystring (same as http\Params::PARSE_URLENCODED|http\Params::PARSE_DIMENSION).
-* PARSE_RFC5987
+* PARSE_RFC5987  
   Parse [RFC5987](http://tools.ietf.org/html/rfc5987) style encoded character set and language information embedded in HTTP header params.
-* PARSE_RFC5988
+* PARSE_RFC5988  
   Parse [RFC5988](http://tools.ietf.org/html/rfc5988) (Web Linking) tags of Link headers.
 
 ## Properties:

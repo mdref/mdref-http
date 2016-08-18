@@ -4,7 +4,7 @@ Register (or deregister) a socket watcher.
 
 ## Params:
 
-* resource $socket
+* resource $socket  
   The socket descriptor to watch.
-* int $poll
+* int $poll  
   http\Client\Curl\User::POLL_* constant.

@@ -7,39 +7,39 @@ CURL feature constants.
 
 ## Constants:
 
-* ASYNCHDNS
+* ASYNCHDNS  
   Whether libcurl supports asynchronous domain name resolution.
-* GSSAPI
+* GSSAPI  
   Whether libcurl supports the Generic Security Services Application Program Interface. Available if libcurl is v7.38.0 or more recent.
-* GSSNEGOTIATE
+* GSSNEGOTIATE  
   Whether libcurl supports HTTP Generic Security Services negotiation.
-* HTTP2
+* HTTP2  
   Whether libcurl supports the HTTP/2 protocol. Available if libcurl is v7.33.0 or more recent.
-* IDN
+* IDN  
   Whether libcurl supports international domain names.
-* IPV6
+* IPV6  
   Whether libcurl supports IPv6.
-* KERBEROS4
+* KERBEROS4  
   Whether libcurl supports the old Kerberos protocol.
-* KERBEROS5
+* KERBEROS5  
   Whether libcurl supports the more recent Kerberos v5 protocol. Available if libcurl is v7.40.0 or more recent.
-* LARGEFILE
+* LARGEFILE  
   Whether libcurl supports large files.
-* LIBZ
+* LIBZ  
   Whether libcurl supports gzip/deflate compression.
-* NTLM
+* NTLM  
   Whether libcurl supports the NT Lan Manager authentication.
-* NTLM_WB
+* NTLM_WB  
   Whether libcurl supports NTLM delegation to a winbind helper. Available if libcurl is v7.22.0 or more recent.
-* PSL
+* PSL  
   Whether libcurl supports the Public Suffix List for cookie host handling. Available if libcurl is v7.47.0 or more recent.
-* SPNEGO
+* SPNEGO  
   Whether libcurl supports the Simple and Protected GSSAPI Negotiation Mechanism.
-* SSL
+* SSL  
   Whether libcurl supports SSL/TLS protocols.
-* SSPI
+* SSPI  
   Whether libcurl supports the Security Support Provider Interface.
-* TLSAUTH_SRP
+* TLSAUTH_SRP  
   Whether libcurl supports TLS Secure Remote Password authentication. Available if libcurl is v7.21.4 or more recent.
-* UNIX_SOCKETS
+* UNIX_SOCKETS  
   Whether libcurl supports connections to unix sockets. Available if libcurl is v7.40.0 or more recent.

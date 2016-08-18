@@ -4,17 +4,17 @@ The HTTP client. See http\Client\Curl's [options](http/Client/Curl#Options:) whi
 
 ## Constants:
 
-* DEBUG_INFO
+* DEBUG_INFO  
   Debug callback's $data contains human readable text.
-* DEBUG_IN
+* DEBUG_IN  
   Debug callback's $data contains data received.
-* DEBUG_OUT
+* DEBUG_OUT  
   Debug callback's $data contains data sent.
-* DEBUG_HEADER
+* DEBUG_HEADER  
   Debug callback's $data contains headers.
-* DEBUG_BODY
+* DEBUG_BODY  
   Debug callback's $data contains a body part.
-* DEBUG_SSL
+* DEBUG_SSL  
   Debug callback's $data contains SSL data.
 
 ## Properties:

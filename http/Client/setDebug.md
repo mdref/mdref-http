@@ -7,7 +7,7 @@ Set client debugging callback.
 
 ## Params:
 
-* callable $callback as function(http\Client $c, http\Client\Request $r, int $type, string $data)
+* callable $callback as function(http\Client $c, http\Client\Request $r, int $type, string $data)  
   The debug callback. For $type see http\Client::DEBUG_* constants.
 
 ## Returns:

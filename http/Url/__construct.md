@@ -13,7 +13,7 @@ See also http\Env\Url.
   Initial URL parts. Either an array, object, http\Url instance or string to parse.
 * Optional mixed $new_url = NULL  
   Overriding URL parts. Either an array, object, http\Url instance or string to parse.
-* Optional int $flags = 0
+* Optional int $flags = 0  
   The modus operandi of constructing the url. See http\Url constants.
 
 ## Throws:

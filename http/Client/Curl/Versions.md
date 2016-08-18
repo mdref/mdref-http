@@ -7,13 +7,13 @@ CURL version constants.
 
 ## Constants:
 
-* CURL
+* CURL  
   Version string of libcurl, e.g. "7.50.0".
-* SSL
+* SSL  
   Version string of the SSL/TLS library, e.g. "OpenSSL/1.0.2h".
-* LIBZ
+* LIBZ  
   Version string of the zlib compression library, e.g. "1.2.8".
-* ARES
+* ARES  
   Version string of the c-ares library, e.g. "1.11.0".
-* IDN
+* IDN  
   Version string of the IDN library, e.g. "1.32".
