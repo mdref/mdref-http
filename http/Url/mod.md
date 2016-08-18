@@ -2,7 +2,7 @@
 
 Clone this URL and apply $parts to the cloned URL.
 
-> ***NOTE:***
+> ***NOTE:***  
 > This method returns a clone (copy) of this instance.
 
 ## Params:

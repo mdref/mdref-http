@@ -2,7 +2,7 @@
 
 Configure the client's low level options.
 
-> ***NOTE:***
+> ***NOTE:***  
 > This method has been added in v2.3.0.
 
 ## Params:

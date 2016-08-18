@@ -2,7 +2,7 @@
 
 Set client debugging callback.
 
-> ***NOTE:***
+> ***NOTE:***  
 > This method has been added in v2.6.0, resp. v3.1.0.
 
 ## Params:
@@ -42,7 +42,7 @@ Set client debugging callback.
 
 	?>
 
-> ***NOTE:***
+> ***NOTE:***  
 > Except for http\Client::DEBUG_INFO, which always occurs separately, the debug
 > callback's $type argument contains a bitmask of (http\Client::DEBUG_IN or http\Client::DEBUG_OUT)
 > and (http\Client::DEBUG_HEADER or http\Client::DEBUG_BODY or http\Client::DEBUG_SSL).

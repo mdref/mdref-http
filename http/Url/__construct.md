@@ -2,7 +2,7 @@
 
 Create an instance of an http\Url.
 
-> ***NOTE:***
+> ***NOTE:***  
 > Prior to v3.0.0, the default for the $flags parameter was http\Url::FROM_ENV.
 
 See also http\Env\Url.

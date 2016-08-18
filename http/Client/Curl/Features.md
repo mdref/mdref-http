@@ -2,7 +2,7 @@
 
 CURL feature constants.
 
-> ***NOTE:***
+> ***NOTE:***  
 > These constants have been added in v2.6.0, resp. v3.1.0.
 
 ## Constants:
