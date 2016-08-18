@@ -2,7 +2,8 @@
 
 Translate character encodings of the querystring with ext/iconv.
 
-> **Note:** This method is only available when ext/iconv support was enabled at build time.
+> ***NOTE:***  
+> This method is only available when ext/iconv support was enabled at build time.
 
 ## Params:
 

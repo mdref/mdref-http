@@ -2,7 +2,8 @@
 
 Negotiate the client's preferred MIME content type.
 
-> **Note:** The first elemement of $supported content types serves as a default if no content-type matches.
+> ***NOTE:***  
+> The first elemement of $supported content types serves as a default if no content-type matches.
 
 ## Params:
 

@@ -3,7 +3,8 @@
 Get the currently set max-age attribute of the cookie list.
 See http\Cookie::setMaxAge().
 
-> **Note:** A return value of -1 means that the attribute is not set.
+> ***NOTE:***  
+> A return value of -1 means that the attribute is not set.
 
 ## Params:
 

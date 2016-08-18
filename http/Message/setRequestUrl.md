@@ -19,7 +19,8 @@ See http\Message::getRequestUrl() and http\Message::setRequestMethod().
 
 ## Example:
 
-> **Note:** The request URL in a request message usually only consists of the path and the querystring.
+> ***NOTE:***  
+> The request URL in a request message usually only consists of the path and the querystring.
 
     <?php
     $m = new http\Message;

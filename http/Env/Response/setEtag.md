@@ -2,7 +2,8 @@
 
 Set a custom ETag.
 
-> **Note:** This will be used for caching and pre-condition checks.
+> ***NOTE:***  
+> This will be used for caching and pre-condition checks.
 
 ## Params:
 

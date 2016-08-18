@@ -2,7 +2,8 @@
 
 Add form fields and files to the message body.
 
-> **Note:** Currently, http\Message\Body::addForm() creates "multipart/form-data" bodies.
+> ***NOTE:***  
+> Currently, http\Message\Body::addForm() creates "multipart/form-data" bodies.
 
 ## Params:
 

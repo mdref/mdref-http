@@ -3,7 +3,8 @@
 (Re)set a cookie.
 See http\Cookie::addCookie() and http\Cookie::setCookies().
 
-> **Note:** The cookie will be deleted from the list if $cookie_value is NULL.
+> ***NOTE:***  
+> The cookie will be deleted from the list if $cookie_value is NULL.
 
 ## Params:
 

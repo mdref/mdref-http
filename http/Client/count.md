@@ -2,7 +2,8 @@
 
 Implements Countable. Retrieve the number of enqueued requests.
 
-> **Note:** The enqueued requests are counted without regard whether they are finished or not.
+> ***NOTE:***  
+> The enqueued requests are counted without regard whether they are finished or not.
 
 ## Params:
 

@@ -3,7 +3,8 @@
 (Re)set an extra attribute.
 See http\Cookie::addExtra().
 
-> **Note:** The attribute will be removed from the extras list if $extra_value is NULL.
+> ***NOTE:***  
+> The attribute will be removed from the extras list if $extra_value is NULL.
 
 ## Params:
 

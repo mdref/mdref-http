@@ -2,7 +2,8 @@
 
 Simply returns the http\Message chain representing the request/response history.
 
-> **Note:** The history is only recorded while http\Client::$recordHistory is true.
+> ***NOTE:***  
+> The history is only recorded while http\Client::$recordHistory is true.
 
 ## Params:
 

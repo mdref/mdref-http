@@ -3,7 +3,8 @@
 Enable throttling.
 Send $chunk_size bytes every $delay seconds.
 
-> **Note:** If you need throttling by regular means, check for other options in your stack, because this method blocks the executing process/thread until the response has completely been sent.
+> ***NOTE:***  
+> If you need throttling by regular means, check for other options in your stack, because this method blocks the executing process/thread until the response has completely been sent.
 
 ## Params:
 

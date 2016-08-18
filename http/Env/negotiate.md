@@ -2,7 +2,8 @@
 
 Generic negotiator. For specific client negotiation see http\Env::negotiateContentType() and related methods.
 
-> **Note:** The first elemement of $supported serves as a default if no operand matches.
+> ***NOTE:***  
+> The first elemement of $supported serves as a default if no operand matches.
 
 ## Params:
 

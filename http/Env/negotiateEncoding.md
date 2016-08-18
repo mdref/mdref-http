@@ -2,7 +2,8 @@
 
 Negotiate the client's preferred encoding.
 
-> **Note:** The first elemement of $supported encodings serves as a default if no encoding matches.
+> ***NOTE:***  
+> The first elemement of $supported encodings serves as a default if no encoding matches.
 
 ## Params:
 

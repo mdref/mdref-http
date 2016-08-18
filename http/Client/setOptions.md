@@ -3,7 +3,8 @@
 Set client options.
 See http\Client\Curl.
 
-> **Note:** Only options specified prior enqueueing a request are applied to the request.
+> ***NOTE:***  
+> Only options specified prior enqueueing a request are applied to the request.
 
 ## Params:
 

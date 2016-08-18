@@ -3,7 +3,8 @@
 Set the response status code.
 See http\Message::getResponseCode() and http\Message::setResponseStatus().
 
-> **Note:** This method also resets the response status phrase to the default for that code.
+> ***NOTE:***  
+> This method also resets the response status phrase to the default for that code.
 
 ## Params:
 

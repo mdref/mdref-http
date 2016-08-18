@@ -6,7 +6,8 @@ header being negotiated is Accept, then a slash is used as primary type
 separator, and if the header is Accept-Language respectively, a hyphen is 
 used instead.
 
-> **Note:** The first elemement of $supported serves as a default if no operand matches.
+> ***NOTE:***  
+> The first elemement of $supported serves as a default if no operand matches.
 
 ## Params:
 

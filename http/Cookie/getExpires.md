@@ -3,7 +3,8 @@
 Get the currently set expires attribute.
 See http\Cookie::setExpires().
 
-> **Note:** A return value of -1 means that the attribute is not set.
+> ***NOTE:***  
+> A return value of -1 means that the attribute is not set.
 
 ## Params:
 

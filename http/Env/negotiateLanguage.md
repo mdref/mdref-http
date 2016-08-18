@@ -2,7 +2,8 @@
 
 Negotiate the client's preferred language.
 
-> **Note:** The first elemement of $supported languages serves as a default if no language matches.
+> ***NOTE:***  
+> The first elemement of $supported languages serves as a default if no language matches.
 
 ## Params:
 

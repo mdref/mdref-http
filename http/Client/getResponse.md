@@ -2,7 +2,8 @@
 
 Retrieve the corresponding reponse of an already finished request, or the last received response if $request is not set.
 
-> **Note:** If $request is NULL, then the response is removed from the internal storage (stack-like operation).
+> ***NOTE:***  
+> If $request is NULL, then the response is removed from the internal storage (stack-like operation).
 
 ## Params:
 

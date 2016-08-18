@@ -3,7 +3,8 @@
 Set additional $params to a clone of this instance. 
 See http\QueryString::set().
 
-> **Note:** This method returns a clone (copy) of this instance.
+> ***NOTE:***  
+> This method returns a clone (copy) of this instance.
 
 ## Params:
 

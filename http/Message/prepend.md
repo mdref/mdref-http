@@ -2,7 +2,8 @@
 
 Prepend message(s) $message to this message, or the top most message of this message chain.
 
-> **Note:** The message chains must not overlap.
+> ***NOTE:***  
+> The message chains must not overlap.
 
 ## Params:
 
