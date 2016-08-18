@@ -18,9 +18,3 @@ Enable sending pipelined requests to the same host if the driver supports it.
 
 * http\Exception\InvalidArgumentException
 * http\Exception\UnexpectedValueException
-
-## Changelog:
-
-Version | Change
---------|-------
-2.3.0   | This method has been deprecated.

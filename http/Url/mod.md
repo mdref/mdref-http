@@ -2,7 +2,8 @@
 
 Clone this URL and apply $parts to the cloned URL.
 
-> **Note:** This method returns a clone (copy) of this instance.
+> ***NOTE:***
+> This method returns a clone (copy) of this instance.
 
 ## Params:
 
@@ -22,6 +23,5 @@ Clone this URL and apply $parts to the cloned URL.
 
 ## Changelog:
 
-Version | Changes
---------|--------
-2.5.0   | Added http\Url::SANITIZE_PATH to default flags.
+0. v2.5.0
+	* Added http\Url::SANITIZE_PATH to default flags.

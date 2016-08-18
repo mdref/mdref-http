@@ -3,6 +3,10 @@
 Set a single header.
 See http\Message::getHeader() and http\Message::addHeader().
 
+> **NOTE:**
+> Prior to v2.5.6/v3.1.0 headers with the same name were merged into a single
+> header with values concatenated by comma.
+
 ## Params:
 
 * string $header  
@@ -13,3 +17,9 @@ See http\Message::getHeader() and http\Message::addHeader().
 ## Returns:
 
 * http\Message, self.
+
+## Changelog:
+
+Version      | Changes
+-------------|--------
+2.5.6, 3.1.0 | Multiple headers with the same name are kept separate instead of merged together.

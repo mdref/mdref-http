@@ -18,9 +18,3 @@ Enable usage of an event library like libevent, which might improve performance 
 
 * http\Exception\InvalidArgumentException
 * http\Exception\UnexpectedValueException
-
-## Changelog:
-
-Version | Change
---------|-------
-2.3.0   | This method has been deprecated.

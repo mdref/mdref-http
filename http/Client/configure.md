@@ -2,6 +2,9 @@
 
 Configure the client's low level options.
 
+> ***NOTE:***
+> This method has been added in v2.3.0.
+
 ## Params:
 
  * array $configuration  

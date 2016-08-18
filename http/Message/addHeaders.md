@@ -43,12 +43,7 @@ Yields:
     }
     array(1) {
       ["Cache-Control"]=>
-      array(2) {
-        [0]=>
-        string(7) "private"
-        [1]=>
-        string(15) "must-revalidate"
-      }
+      string(24) "private, must-revalidate"
     }
     Cache-Control: private, must-revalidate
 

@@ -2,11 +2,8 @@
 
 The parser which is underlying http\Header and http\Message.
 
-## Changelog:
-
-| Version | Change 
-|---------|--------
-| 2.3.0   | Added http\Header\Parser API
+> ***NOTE:***
+> This class has been added in v2.3.0.
 
 ## Constants:
 

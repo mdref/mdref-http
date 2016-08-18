@@ -2,15 +2,17 @@
 
 The http\Client\Curl namespace holds option value constants specific to the curl driver of the http\Client.
 
-## Changelog
-
-Version | Change
---------|-------
-2.1.0   | Added $dns_interface, $dns_local_ip4, $dns_local_ip6 and $expect_100_timeout options.
-2.1.2   | Added request option constants:<br> http\Client\Curl\POSTREDIR_303,<br> http\Client\Curl\AUTH_SPNEGO,<br> http\Client\Curl\SSL_VERSION_TLSv1_0,<br> http\Client\Curl\SSL_VERSION_TLSv1_1 and<br> http\Client\Curl\SSL_VERSION_TLSv1_2 
-2.3.0   | Added $pinned_publickey, $ltsauth and $verifystatus $ssl options.<br>Added $proxyheader and $unix_socket_path options.<br>Added request option constants:<br>http\Client\Curl\HTTP_VERSION_2_0 and<br>http\Client\Curl\TLS_AUTH_SRP.
-
 ## Constants:
+
+### Features and Versions:
+
+* FEATURES
+  Bitmask of available libcurl features.
+  See http\Client\Curl\Features namespace.
+* VERSIONS
+  List of library versions of or linked into libcurl,
+  e.g. "libcurl/7.50.0 OpenSSL/1.0.2h zlib/1.2.8 libidn/1.32 nghttp2/1.12.0".
+  See http\Client\Curl\Versions namespace.
 
 ### HTTP Protocol Version
 
@@ -124,6 +126,8 @@ The option names used here are more or less derived from the corresponding CURLO
   Comma separated list of hosts where no proxy should be used. Available if libcurl is v7.19.4 or more recent.
 * array $proxyheader  
   List of key/value pairs of headers which should only be sent to a proxy. Available if libcurl is v7.37.0 or more recent.
+* string $proxy_service_name
+  Proxy service name. The default service name is "HTTP" for HTTP based proxies and "rcmd" for SOCKS5. Available if libcurl is v7.43.0 or more recent and has built-in GSSAPI support.
 
 ### DNS
 
@@ -178,6 +182,8 @@ The option names used here are more or less derived from the corresponding CURLO
   Disable [Nagle's algotrithm](http://tools.ietf.org/html/rfc896).
 * string $unix_socket_path  
   Connect to the webserver listening at $unix_socket_path instead of opening a TCP connection to it. Available if libcurl is v7.40.0 or more recent.
+* bool $path_as_is
+  Do *not* squash sequences of "/../" or "/./" that may exist in the URL's path.
 
 ### Authentication
 
@@ -185,6 +191,8 @@ The option names used here are more or less derived from the corresponding CURLO
   user:password
 * int $httpauthtype  
   See http\Client\Curl\AUTH_* constants.
+* string $service_name
+  The name of the service for DIGEST-MD5, SPNEGO and KERBEROS5 authentication mechanisms. The default service name is "HTTP". Available if libcurl is v7.43.0 or more recent.
 
 ### Redirection
 
@@ -291,7 +299,9 @@ The option names used here are more or less derived from the corresponding CURLO
   * string $lsauthpass  
     TLS-SRP password. Available if libcurl is v7.21.4 or more recent.
   * bool $verifystatus  
-    Enable OCSP. Available if libcurl is v7.41.0 or more recent and was build with openssl, gnutls or nss support.
+    Enable OCSP. Available if libcurl is v7.41.0 or more recent and was built with OpenSSL, GnuTLS or NSS support.
+  * bool $falsestart
+    Whether false start should be used during the TLS handshake. Available if libcurl is v7.42.0 or more recent and was built with NSS or SecureTransport support.
 
 ## Configuration:
 
@@ -313,5 +323,11 @@ The option names used here are more or less derived from the corresponding CURLO
   Simple list of server software names to blacklist for pipelining. Available if libcurl is v7.30.0 or more recent.
 * array $pipelining_site_bl  
   Simple list of server host names to blacklist for pipelining. Available if libcurl is v7.30.0 or more recent.
-* bool $use_eventloop  
-  Whether to use an event loop. Available if pecl/http was built with libevent support.
+* mixed $use_eventloop
+  Whether to use an event loop. This option accepts either bool, whether to use
+  the internal event loop, or an instance of an http\Client\Curl\User implementation.
+  The internal event loop is only available if pecl/http was built with libevent support.
+* bool $share_cookies
+  Whether to let the client share cookies between requests.
+* bool $share_ssl
+  Whether to let the client share SSL/TLS sessions between requests. Available if libcurl is v7.23.0 or more recent.

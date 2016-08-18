@@ -115,8 +115,9 @@ The http extension registers the ```http.*``` namespace for its stream filters. 
 
 ## Changelog:
 
-Version | Change
---------|-------
-2.0.4   | Dropped the pecl/event conflict.
-2.4.0   | Dropped the ext/json dependency.
-2.4.2   | Added libidn2 and libicu as fallback for IDNA support.
+0. v2.0.4
+	* Dropped the pecl/event conflict.
+0. v2.4.0
+	* Dropped the ext/json dependency.
+0. v2.4.2
+	* Added libidn2 and libicu as fallback for IDNA support.

@@ -2,20 +2,6 @@
 
 The http\Url class provides versatile means to parse, construct and manipulate URLs.
 
-## Changelog:
-
-Version | Changes
---------|--------
-2.2.0   | Added parser constants:<br> http\Url::PARSE_MBUTF8,<br> http\Url::PARSE_MBLOC (on systems with wide character support),<br>http\Url::PARSE_TOPCT,<br>http\Url::PARSE_TOIDN (with libidn support).
-
-## Backwards compatibility
-
-### New parser in v2.2.0
-
-PHP's [parse_url()](http://php.net/parse_url) is avoided since v2.2.0.
-
-Creating an empty url by `new http\Url(NULL, NULL, 0)` will not result in `http://localhost/` anymore but in an empty URL instead.
-
 ## Constants:
 
 * REPLACE  

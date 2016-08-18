@@ -2,11 +2,8 @@
 
 The parser which is underlying http\Message.
 
-## Changelog:
-
-| Version | Change 
-|---------|--------
-| 2.2.0   | Added http\Message\Parser API
+> ***NOTE:****
+> This class was added in v2.2.0.
 
 ## Constants:
 
