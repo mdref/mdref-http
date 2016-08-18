@@ -3,7 +3,7 @@
 Set the message headers.
 See http\Message::getHeaders() and http\Message::addHeaders().
 
-> **NOTE:**
+> ***NOTE:***  
 > Prior to v2.5.6/v3.1.0 headers with the same name were merged into a single
 > header with values concatenated by comma.
 
@@ -47,6 +47,5 @@ Yields:
 
 ## Changelog:
 
-Version      | Changes
--------------|--------
-2.5.6, 3.1.0 | Multiple headers with the same name are kept separate instead of merged together.
+0. 2.5.6, 3.1.0
+	* Multiple headers with the same name are kept separate instead of merged together.
