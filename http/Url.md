@@ -38,6 +38,13 @@ The http\Url class provides versatile means to parse, construct and manipulate U
   Parse and convert multibyte hostnames according to IDNA (with libidn support).
 * PARSE_TOPCT  
   Percent encode multibyte sequences in the userinfo, path, query and fragment parts of the URL.
+* IGNORE_ERRORS  
+  Continue parsing when encountering errors.
+* SILENT_ERRORS  
+  Suppress errors/exceptions.
+* STDFLAGS  
+  Standard flags used by default internally for e.g. http\Message::setRequestUrl().
+  Enables joining path and query, sanitizing path, multibyte/unicode, international domain names and transient percent encoding.
 
 ## Properties:
 

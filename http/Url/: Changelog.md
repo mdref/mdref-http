@@ -6,6 +6,11 @@
 		* http\Url::PARSE_MBLOC (on systems with wide character support)
 		* http\Url::PARSE_TOIDN (with libidn support)
 		* http\Url::PARSE_TOPCT
+0. v2.6.0, v3.1.0
+	* Added parser constants:
+		* http\Url::IGNORE_ERRORS
+		* http\Url::SILENT_ERRORS
+		* http\Url::STDFLAGS
 
 ## Backwards compatibility notes
 
