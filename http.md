@@ -2,7 +2,7 @@
 
 ## About:
 
-Extended HTTP support. Again. 
+Extended HTTP support. Again.
 
 * Introduces the http namespace.
 * PHP stream based message bodies.
@@ -25,6 +25,7 @@ The following system libraries are required to build this extension:
 
 =zlib=
 	Provides gzip/zlib/deflate encoding.  
+	Configure: `--with-http-zlib-dir`  
 	Minimum version: 1.2.0.4  
 	Install on Debian: `apt-get install zlib1g-dev`
 
@@ -33,31 +34,55 @@ The following system libraries are required to build this extension:
 
 The following system libraries are optional and provide additional features:
 
+=libcurl=
+	Provides HTTP request functionality.  
+	Configure: `--with-http-libcurl-dir`  
+	Minimum version: 7.18.2  
+	Install on Debian: `apt-get install libcurl4-openssl-dev`  
+
+=libevent=
+	Internal event loop support for the HTTP client.  
+	Configure: `--with-http-libevent-dir`  
+	Minimum version: none  
+	Install on Debian: `apt-get install libevent-dev`
+
+=libicu=
+	Provides IDNA2003 and/or IDNA2008 support in URLs.  
+	Configure: `--with-http-libicu-dir`  
+	Minimum version: none  
+	Install on Debian: `apt-get install libicu-dev`
+
 =libidn=
-	Provides IDNA support in URLs.  
+	Provides IDNA2003 support in URLs.  
+	Configure: `--with-http-libidn-dir`  
 	Minimum version: none  
 	Install on Debian: `apt-get install libidn11-dev`
 
 =libidn2=
-	Provides IDNA support in URLs (fallback if libidn is not available).  
+	Provides IDNA2008 support in URLs.  
+	Configure: `--with-http-libidn2-dir`  
 	Minimum version: none  
 	Install on Debian: `apt-get install libidn2-0-dev`
 
-=libicu=
-	Provides IDNA support in URLs (fallback if libidn is not available).  
+=libidnkit=
+	Provides IDNA2003 support in URLs. Conflicts with libidnkit2.  
+	Configure: `--with-http-libidnkit-dir`  
 	Minimum version: none  
-	Install on Debian: `apt-get install libicu-dev`
+	Install on Debian: N/A
 
-=libcurl=
-	Provides HTTP request functionality.  
-	Minimum version: 7.18.2  
-	Install on Debian: `apt-get install libcurl4-openssl-dev`  
-	Note: There are usually different styles of SSL support for libcurl available, so you can replace 'openssl' in the above command f.e. with 'nss' or 'gnutls'.
-
-=libevent=
-	Eventloop support for the HTTP client.  
+=libidnkit2=
+	Provides IDNA2008 support in URLs. Conflicts with libidnkit.  
+	Configure: `--with-http-libidnkit2-dir`  
 	Minimum version: none  
-	Install on Debian: `apt-get install libevent-dev`
+	Install on Debian: N/A
+
+##### A note on IDNA libraries:
+
+If configured with multiple IDNA libraries' support, there's a run-time precedence of ICU over GNU libidn, which in turn has precendence over idnkit. If neither IDNA2008, nor IDNA2003 is explicitly requested, IDNA2008 has precendence.
+
+##### A note on the CURL library:
+
+There are usually different styles of SSL support for libcurl available, so you can choose between 'openssl' and f.e. 'nss' or 'gnutls' when installing libcurl.
 
 ### PHP extensions:
 
@@ -79,12 +104,12 @@ Please ensure that all extension on which pecl/http depends, are loaded before i
 	; obligatory deps
 	extension = raphf.so
 	extension = propro.so
-	
+
 	; if shared deps were enabled
 	extension = hash.so
 	extension = iconv.so
 	extension = json.so
-	
+
 	; finally load pecl/http
 	extension = http.so
 
@@ -121,3 +146,8 @@ The http extension registers the ```http.*``` namespace for its stream filters. 
 	* Dropped the ext/json dependency.
 0. v2.4.2
 	* Added libidn2 and libicu as fallback for IDNA support.
+0. v2.6.0, v3.1.0
+	* Added idnkit-1 IDNA2003 support.
+	* Added idnkit-2 IDNA2008 support.
+	* Added ICU IDNA2008 support.
+	* Added explicit configuration options for each IDNA library.

@@ -35,7 +35,11 @@ The http\Url class provides versatile means to parse, construct and manipulate U
 * PARSE_MBLOC  
   Parse locale encoded multibyte sequences (on systems with wide character support).
 * PARSE_TOIDN  
-  Parse and convert multibyte hostnames according to IDNA (with libidn support).
+  Parse and convert multibyte hostnames according to IDNA (with IDNA support).
+* PARSE_TOIDN_2003  
+  Explicitly request IDNA2003 implementation if available (libidn, idnkit or ICU).
+* PARSE_TOIDN_2008  
+  Explicitly request IDNA2008 implementation if available (libidn2, idnkit2 or ICU).
 * PARSE_TOPCT  
   Percent encode multibyte sequences in the userinfo, path, query and fragment parts of the URL.
 * IGNORE_ERRORS  

@@ -11,6 +11,8 @@
 		* http\Url::IGNORE_ERRORS
 		* http\Url::SILENT_ERRORS
 		* http\Url::STDFLAGS
+		* http\Url::PARSE_TOIDN_2003
+		* http\Url::PARSE_TOIDN_2008
 
 ## Backwards compatibility notes
 
