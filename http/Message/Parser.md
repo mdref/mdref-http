@@ -2,7 +2,7 @@
 
 The parser which is underlying http\Message.
 
-> ***NOTE:****
+> ***NOTE:***
 > This class was added in v2.2.0.
 
 ## Constants:
