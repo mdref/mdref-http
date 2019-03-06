@@ -8,7 +8,7 @@ Create a parameter list out of the HTTP header value.
   The parameter separator(s).
 * Optional mixed $as  
   The argument separator(s).
-* Optional mixed  
+* Optional mixed $vs  
   The value separator(s).
 * Optional int $flags  
   The modus operandi. See http\Params constants.

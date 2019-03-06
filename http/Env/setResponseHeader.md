@@ -1,4 +1,4 @@
-# static bool http\Env::setResponseHeader(string $header_name, [mixed $header_value = NULL[, int $response_code = 0[, bool $replace = true]]]
+# static bool http\Env::setResponseHeader(string $header_name[, mixed $header_value = NULL[, int $response_code = 0[, bool $replace = true]]])
 
 Set a response header, either replacing a prior set header, or appending the new header value, depending on $replace.
 

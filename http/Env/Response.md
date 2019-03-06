@@ -1,4 +1,4 @@
-# class http\Env\Response extends http\Message is callable
+# class http\Env\Response extends http\Message
 
 The http\Env\Response class' instances represent the server's current HTTP response.
 

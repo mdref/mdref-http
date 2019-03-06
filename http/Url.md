@@ -22,7 +22,7 @@ The http\Url class provides versatile means to parse, construct and manipulate U
   Do not include the URL path.
 * STRIP_QUERY  
   Do not include the URL querystring.
-* STRIP_FRAMGENT  
+* STRIP_FRAGMENT  
   Strip the fragment (hash) from the URL.
 * STRIP_ALL  
   Strip everything except scheme and host information.
