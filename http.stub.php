@@ -1483,7 +1483,7 @@ class QueryString implements \Serializable, \ArrayAccess, \IteratorAggregate {
 	/**
 	 * Cast requested value to bool.
 	 */
-	const TYPE_BOOL = 16;
+	const TYPE_BOOL = 13;
 	/**
 	 * Cast requested value to int.
 	 */
@@ -1912,7 +1912,7 @@ const FEATURES = 4179869;
  *   e.g. "libcurl/7.50.0 OpenSSL/1.0.2h zlib/1.2.8 libidn/1.32 nghttp2/1.12.0".
  *   See http\Client\Curl\Versions namespace.
  */
-const VERSIONS = 'libcurl/7.64.0 OpenSSL/1.1.1a zlib/1.2.11 libidn2/2.1.1 libpsl/0.20.2 (+libidn2/2.1.1) libssh2/1.8.0 nghttp2/1.36.0';
+const VERSIONS = 'libcurl/7.52.1 OpenSSL/1.0.2q zlib/1.2.8 libidn2/0.16 libpsl/0.17.0 (+libidn2/0.16) libssh2/1.7.0 nghttp2/1.18.1 librtmp/2.3';
 /**
  * Use HTTP/1.0 protocol version.
  */
@@ -2348,15 +2348,15 @@ namespace http\Client\Curl\Versions;
 /**
  * Version string of libcurl, e.g. "7.50.0".
  */
-const CURL = '7.64.0';
+const CURL = '7.52.1';
 /**
  * Version string of the SSL/TLS library, e.g. "OpenSSL/1.0.2h".
  */
-const SSL = 'OpenSSL/1.1.1a';
+const SSL = 'OpenSSL/1.0.2q';
 /**
  * Version string of the zlib compression library, e.g. "1.2.8".
  */
-const LIBZ = '1.2.11';
+const LIBZ = '1.2.8';
 /**
  * Version string of the c-ares library, e.g. "1.11.0".
  */
@@ -3126,7 +3126,7 @@ class Body implements \Serializable {
 /**
  * The parser which is underlying http\Message.
  * 
- * > ***NOTE:****
+ * > ***NOTE:***
  * > This class was added in v2.2.0.
  */
 class Parser  {
