@@ -1912,7 +1912,7 @@ const FEATURES = 4179869;
  *   e.g. "libcurl/7.50.0 OpenSSL/1.0.2h zlib/1.2.8 libidn/1.32 nghttp2/1.12.0".
  *   See http\Client\Curl\Versions namespace.
  */
-const VERSIONS = 'libcurl/7.52.1 OpenSSL/1.0.2q zlib/1.2.8 libidn2/0.16 libpsl/0.17.0 (+libidn2/0.16) libssh2/1.7.0 nghttp2/1.18.1 librtmp/2.3';
+const VERSIONS = 'libcurl/7.52.1 OpenSSL/1.0.2r zlib/1.2.8 libidn2/0.16 libpsl/0.17.0 (+libidn2/0.16) libssh2/1.7.0 nghttp2/1.18.1 librtmp/2.3';
 /**
  * Use HTTP/1.0 protocol version.
  */
@@ -2352,7 +2352,7 @@ const CURL = '7.52.1';
 /**
  * Version string of the SSL/TLS library, e.g. "OpenSSL/1.0.2h".
  */
-const SSL = 'OpenSSL/1.0.2q';
+const SSL = 'OpenSSL/1.0.2r';
 /**
  * Version string of the zlib compression library, e.g. "1.2.8".
  */
