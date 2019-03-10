@@ -9,7 +9,7 @@ None.
 
 ## Returns:
 
-* http/Message, the parent message.
+* http\Message, the parent message.
 
 ## Throws:
 
