@@ -289,7 +289,7 @@ class Client implements \SplSubject, \Countable {
 	 * @param \http\Client\Request $request The request to probe for transfer info.
 	 * @throws \http\Exception\InvalidArgumentException
 	 * @throws \http\Exception\UnexpectedValueException
-	 * @return  stdClass instance holding transfer related information.
+	 * @return object stdClass instance holding transfer related information.
 	 */
 	function getTransferInfo(\http\Client\Request $request) {}
 	/**
@@ -1080,7 +1080,7 @@ class Message implements \Countable, \Serializable, \Iterator {
 	 * 
 	 * @throws \http\Exception\InvalidArgumentException
 	 * @throws \http\Exception\BadMethodCallException
-	 * @return \http /Message, the parent message.
+	 * @return \http\Message the parent message.
 	 */
 	function getParentMessage() {}
 	/**
@@ -1447,7 +1447,7 @@ class Params implements \ArrayAccess {
 	 * Implements ArrayAccess.
 	 * 
 	 * @param string $name The offset to retrieve.
-	 * @return  contents at offset.
+	 * @return mixed contents at offset.
 	 */
 	function offsetGet($name) {}
 	/**
@@ -1912,7 +1912,7 @@ const FEATURES = 4179869;
  *   e.g. "libcurl/7.50.0 OpenSSL/1.0.2h zlib/1.2.8 libidn/1.32 nghttp2/1.12.0".
  *   See http\Client\Curl\Versions namespace.
  */
-const VERSIONS = 'libcurl/7.64.0 OpenSSL/1.1.1b zlib/1.2.11 libidn2/2.0.5 libpsl/0.20.2 (+libidn2/2.0.5) libssh2/1.8.0 nghttp2/1.36.0 librtmp/2.3';
+const VERSIONS = 'libcurl/7.64.0 OpenSSL/1.1.1a zlib/1.2.11 libidn2/2.1.1 libpsl/0.20.2 (+libidn2/2.1.1) libssh2/1.8.0 nghttp2/1.36.0';
 /**
  * Use HTTP/1.0 protocol version.
  */
@@ -2352,7 +2352,7 @@ const CURL = '7.64.0';
 /**
  * Version string of the SSL/TLS library, e.g. "OpenSSL/1.0.2h".
  */
-const SSL = 'OpenSSL/1.1.1b';
+const SSL = 'OpenSSL/1.1.1a';
 /**
  * Version string of the zlib compression library, e.g. "1.2.8".
  */
@@ -3073,7 +3073,7 @@ class Body implements \Serializable {
 	/**
 	 * Retrieve the underlying stream resource.
 	 * 
-	 * @return  the underlying stream.
+	 * @return resource the underlying stream.
 	 */
 	function getResource() {}
 	/**
