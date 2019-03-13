@@ -1938,7 +1938,7 @@ const FEATURES = 4179869;
  *   e.g. "libcurl/7.50.0 OpenSSL/1.0.2h zlib/1.2.8 libidn/1.32 nghttp2/1.12.0".
  *   See http\Client\Curl\Versions namespace.
  */
-const VERSIONS = 'libcurl/7.64.0 OpenSSL/1.1.1a zlib/1.2.11 libidn2/2.1.1 libpsl/0.20.2 (+libidn2/2.1.1) libssh2/1.8.0 nghttp2/1.36.0';
+const VERSIONS = 'libcurl/7.64.0 OpenSSL/1.1.1b zlib/1.2.11 libidn2/2.0.5 libpsl/0.20.2 (+libidn2/2.0.5) libssh2/1.8.0 nghttp2/1.36.0 librtmp/2.3';
 /**
  * Use HTTP/1.0 protocol version.
  */
@@ -2382,7 +2382,7 @@ const CURL = '7.64.0';
 /**
  * Version string of the SSL/TLS library, e.g. "OpenSSL/1.0.2h".
  */
-const SSL = 'OpenSSL/1.1.1a';
+const SSL = 'OpenSSL/1.1.1b';
 /**
  * Version string of the zlib compression library, e.g. "1.2.8".
  */
@@ -2564,39 +2564,39 @@ class Enbrotli extends \http\Encoding\Stream {
 	/**
 	 * Default compression level.
 	 */
-	const LEVEL_DEF = 4;
+	const LEVEL_DEF = NULL;
 	/**
 	 * Least compression level.
 	 */
-	const LEVEL_MIN = 1;
+	const LEVEL_MIN = NULL;
 	/**
 	 * Greatest compression level.
 	 */
-	const LEVEL_MAX = 11;
+	const LEVEL_MAX = NULL;
 	/**
 	 * Default window bits.
 	 */
-	const WBITS_DEF = 352;
+	const WBITS_DEF = NULL;
 	/**
 	 * Minimum window bits.
 	 */
-	const WBITS_MIN = 160;
+	const WBITS_MIN = NULL;
 	/**
 	 * Maximum window bits.
 	 */
-	const WBITS_MAX = 384;
+	const WBITS_MAX = NULL;
 	/**
 	 * Default compression mode.
 	 */
-	const MODE_GENERIC = 0;
+	const MODE_GENERIC = NULL;
 	/**
 	 * Compression mode for UTF-8 formatted text.
 	 */
-	const MODE_TEXT = 4096;
+	const MODE_TEXT = NULL;
 	/**
 	 * Compression mode used in WOFF 2.0.
 	 */
-	const MODE_FONT = 8192;
+	const MODE_FONT = NULL;
 	/**
 	 * Encode data with brotli encoding.
 	 * 
