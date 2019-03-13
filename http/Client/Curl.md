@@ -21,7 +21,9 @@ The http\Client\Curl namespace holds option value constants specific to the curl
 * HTTP_VERSION_1_1  
   Use HTTP/1.1 protocol version.
 * HTTP_VERSION_2_0  
-  Use HTTP/2 protocol version. Available if libcurl is v7.33.0 or more recent and was built with nghttp2 support.
+  Attempt to use HTTP/2 protocol version. Available if libcurl is v7.33.0 or more recent and was built with nghttp2 support.
+* HTTP_VERSION_2TLS  
+  Attempt to use version 2 for HTTPS, version 1.1 for HTTP. Available if libcurl is v7.47.0 or more recent and was built with nghttp2 support.
 * HTTP_VERSION_ANY  
   Use any HTTP protocol version.
   
@@ -44,7 +46,7 @@ The http\Client\Curl namespace holds option value constants specific to the curl
 
 ### TLS Auth Types
 
-* TLS_AUTH_SRP  
+* TLSAUTH_SRP  
   Use TLS SRP authentication. Available if libcurl is v7.21.4 or more recent and was built with gnutls or openssl with TLS-SRP support.
 
 ### DNS IP Version

@@ -1,4 +1,4 @@
-# http\Url http\Url::mod(mixed $parts[, int $flags = http\Url::JOIN_PATH|http\Url::JOIN_QUERY|http\Url::SANITIZE_PATH)
+# http\Url http\Url::mod(mixed $parts[, int $flags = http\Url::JOIN_PATH|http\Url::JOIN_QUERY|http\Url::SANITIZE_PATH])
 
 Clone this URL and apply $parts to the cloned URL.
 

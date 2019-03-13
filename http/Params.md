@@ -16,6 +16,8 @@ Parse, interpret and compose HTTP (header) parameters.
   Do not interpret the parsed parameters.
 * PARSE_DEFAULT  
   Interpret input as default formatted parameters.
+* PARSE_ESCAPED  
+  Parse backslash escaped (quoted) strings.
 * PARSE_URLENCODED  
   Urldecode single units of parameters, arguments and values.
 * PARSE_DIMENSION  

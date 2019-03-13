@@ -31,7 +31,7 @@ The http\Url class provides versatile means to parse, construct and manipulate U
 * SANITIZE_PATH  
   Whether to sanitize the URL path (consolidate double slashes, directory jumps etc.)
 * PARSE_MBUTF8  
-  Parse UTF-8 encododed multibyte sequences.
+  Parse UTF-8 encoded multibyte sequences.
 * PARSE_MBLOC  
   Parse locale encoded multibyte sequences (on systems with wide character support).
 * PARSE_TOIDN  

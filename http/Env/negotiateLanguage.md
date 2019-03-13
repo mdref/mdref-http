@@ -1,15 +1,15 @@
-# static string http\Env::negotiateLanguage(array $supported[, array &$result)
+# static string http\Env::negotiateLanguage(array $supported[, array &$result])
 
 Negotiate the client's preferred language.
 
 > ***NOTE:***  
-> The first elemement of $supported languages serves as a default if no language matches.
+> The first element of $supported languages serves as a default if no language matches.
 
 ## Params:
 
 * array $supported  
   List of supported content languages.
-* Optional reference array &$result  
+* Optional array &$result  
   Out parameter recording negotiation results.
   
 ## Returns:

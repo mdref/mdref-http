@@ -4,7 +4,7 @@ Parse a stream.
 
 ## Params:
 
-* stream $resource  
+* resource $stream  
   The message stream to parse from.
 * int $flags  
   Any combination of [parser flags](http/Message/Parser#Parser.flags:).

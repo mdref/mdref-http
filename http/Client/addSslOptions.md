@@ -14,4 +14,4 @@ See http\Client::setSslOptions(), http\Client::setOptions() and http\Client\Curl
 
 ## Throws:
 
-* http\Exceptionc\InvalidArgumentException
+* http\Exception\InvalidArgumentException

@@ -1,6 +1,6 @@
 # object http\Client::getTransferInfo(http\Client\Request $request)
 
-Get transfer related informatioin for a running or finished request.
+Get transfer related information for a running or finished request.
 
 ## Params:
 

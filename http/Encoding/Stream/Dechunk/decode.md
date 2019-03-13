@@ -6,7 +6,7 @@ Decode chunked encoded data.
 
 * string $data  
   The data to decode.
-* Optional reference int $decoded_len = 0  
+* Optional int &$decoded_len = 0  
   Out parameter with the length of $data that's been decoded.
   Should be ```strlen($data)``` if not truncated.
 

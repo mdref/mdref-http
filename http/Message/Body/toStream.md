@@ -1,6 +1,6 @@
 # http\Message\Body http\Message\Body::toStream(resource $stream[, int $offset = 0[, int $maxlen = 0]])
 
-Stream the message body into antother stream $stream, starting from $offset, streaming $maxlen at most.
+Stream the message body into another stream $stream, starting from $offset, streaming $maxlen at most.
 
 ## Params:
 

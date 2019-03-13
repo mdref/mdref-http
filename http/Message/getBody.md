@@ -14,4 +14,4 @@ None.
 ## Throws:
 
 * http\Exception\InvalidArgumentException
-* http\Exception\UnexpectedValueEcxeption
+* http\Exception\UnexpectedValueException

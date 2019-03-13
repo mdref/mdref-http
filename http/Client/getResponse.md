@@ -1,6 +1,6 @@
 # http\Client\Response http\Client::getResponse([http\Client\Request $request = NULL])
 
-Retrieve the corresponding reponse of an already finished request, or the last received response if $request is not set.
+Retrieve the corresponding response of an already finished request, or the last received response if $request is not set.
 
 > ***NOTE:***  
 > If $request is NULL, then the response is removed from the internal storage (stack-like operation).

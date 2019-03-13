@@ -92,7 +92,7 @@ class Client implements \SplSubject, \Countable {
 	 * See http\Client::setSslOptions(), http\Client::setOptions() and http\Client\Curl\$ssl options.
 	 * 
 	 * @param array $ssl_options Add this SSL options.
-	 * @throws \http\Exceptionc\InvalidArgumentException
+	 * @throws \http\Exception\InvalidArgumentException
 	 * @return \http\Client self.
 	 */
 	function addSslOptions(array $ssl_options = NULL) {}
@@ -181,7 +181,7 @@ class Client implements \SplSubject, \Countable {
 	 * 
 	 * > ***Note:***
 	 * > The http\Client\Response object resulting from the request is always stored
-	 * > internally to be retreived at a later time, __even__ when $cb is used.
+	 * > internally to be retrieved at a later time, __even__ when $cb is used.
 	 * >
 	 * > If you are about to send a lot of requests and do __not__ need the response
 	 * > after executing the callback, you can use http\Client::getResponse() within
@@ -190,7 +190,8 @@ class Client implements \SplSubject, \Countable {
 	 * See http\Client::dequeue() and http\Client::send().
 	 * 
 	 * @param \http\Client\Request $request The request to enqueue.
-	 * @param callable $cb A callback to automatically call when the request has finished.
+	 * @param callable $cb as function(\http\Response $response) : ?bool
+	 *   A callback to automatically call when the request has finished.
 	 * @throws \http\Exception\InvalidArgumentException
 	 * @throws \http\Exception\BadMethodCallException
 	 * @throws \http\Exception\RuntimeException
@@ -203,7 +204,7 @@ class Client implements \SplSubject, \Countable {
 	 * See f.e. the [configuration options for the Curl driver](http/Client/Curl#Configuration:).
 	 * 
 	 * @throws \http\Exception\InvalidArgumentException
-	 * @return array list of key/value pairs of available configuarion options and their default values.
+	 * @return array list of key/value pairs of available configuration options and their default values.
 	 */
 	function getAvailableConfiguration() {}
 	/**
@@ -264,7 +265,7 @@ class Client implements \SplSubject, \Countable {
 	 */
 	function getProgressInfo(\http\Client\Request $request) {}
 	/**
-	 * Retrieve the corresponding reponse of an already finished request, or the last received response if $request is not set.
+	 * Retrieve the corresponding response of an already finished request, or the last received response if $request is not set.
 	 * 
 	 * > ***NOTE:***
 	 * > If $request is NULL, then the response is removed from the internal storage (stack-like operation).
@@ -284,7 +285,7 @@ class Client implements \SplSubject, \Countable {
 	 */
 	function getSslOptions() {}
 	/**
-	 * Get transfer related informatioin for a running or finished request.
+	 * Get transfer related information for a running or finished request.
 	 * 
 	 * @param \http\Client\Request $request The request to probe for transfer info.
 	 * @throws \http\Exception\InvalidArgumentException
@@ -315,11 +316,13 @@ class Client implements \SplSubject, \Countable {
 	 * The difference simply is, that this method, in contrast to http\Client::enqueue(), does not throw an http\Exception when the request to queue is already enqueued and dequeues it automatically prior enqueueing it again.
 	 * 
 	 * @param \http\Client\Request $request The request to queue.
+	 * @param callable $cb as function(\http\Response $response) : ?bool
+	 *   A callback to automatically call when the request has finished.
 	 * @throws \http\Exception\InvalidArgumentException
 	 * @throws \http\Exception\RuntimeException
 	 * @return \http\Client self.
 	 */
-	function requeue(\http\Client\Request $request) {}
+	function requeue(\http\Client\Request $request, callable $cb = NULL) {}
 	/**
 	 * Reset the client to the initial state.
 	 * 
@@ -642,21 +645,23 @@ namespace http;
  */
 class Env  {
 	/**
-	 * Retreive the current HTTP request's body.
+	 * Retrieve the current HTTP request's body.
 	 * 
+	 * @param string $body_class_name A user class extending http\Message\Body.
 	 * @throws \http\Exception\InvalidArgumentException
 	 * @throws \http\Exception\UnexpectedValueException
 	 * @return \http\Message\Body instance representing the request body
 	 */
-	function getRequestBody() {}
+	function getRequestBody(string $body_class_name = NULL) {}
 	/**
 	 * Retrieve one or all headers of the current HTTP request.
 	 * 
+	 * @param string $header_name The key of a header to retrieve.
 	 * @return NULL|string|array NULL if $header_name was not found
 	 * 		 or string the compound header when $header_name was found
 	 * 		 or array of all headers if $header_name was not specified
 	 */
-	function getRequestHeader() {}
+	function getRequestHeader(string $header_name = NULL) {}
 	/**
 	 * Get the HTTP response code to send.
 	 * 
@@ -666,11 +671,12 @@ class Env  {
 	/**
 	 * Get one or all HTTP response headers to be sent.
 	 * 
+	 * @param string $header_name The name of the response header to retrieve.
 	 * @return string|NULL|array string the compound value of the response header to send
 	 * 		 or NULL if the header was not found
 	 * 		 or array of all response headers, if $header_name was not specified
 	 */
-	function getResponseHeader() {}
+	function getResponseHeader(string $header_name = NULL) {}
 	/**
 	 * Retrieve a list of all known HTTP response status.
 	 * 
@@ -684,67 +690,72 @@ class Env  {
 	/**
 	 * Retrieve the string representation of specified HTTP response code.
 	 * 
-	 * @return string|\empty string the HTTP response status message
-	 * 		 or \empty string, if no message for this code was found
+	 * @param int $code The HTTP response code to get the string representation for.
+	 * @return string the HTTP response status message (may be empty, if no message for this code was found)
 	 */
-	function getResponseStatusForCode() {}
+	function getResponseStatusForCode(int $code) {}
 	/**
 	 * Generic negotiator. For specific client negotiation see http\Env::negotiateContentType() and related methods.
 	 * 
 	 * > ***NOTE:***
-	 * > The first elemement of $supported serves as a default if no operand matches.
+	 * > The first element of $supported serves as a default if no operand matches.
 	 * 
 	 * @param string $params HTTP header parameter's value to negotiate.
 	 * @param array $supported List of supported negotiation operands.
 	 * @param string $prim_typ_sep A "primary type separator", i.e. that would be a hyphen for content language negotiation (en-US, de-DE, etc.).
+	 * @param array $result Out parameter recording negotiation results.
 	 * @return NULL|string NULL if negotiation fails.
 	 * 		 or string the closest match negotiated, or the default (first entry of $supported).
 	 */
-	function negotiate(string $params, array $supported, string $prim_typ_sep = NULL) {}
+	function negotiate(string $params, array $supported, string $prim_typ_sep = NULL, array &$result = NULL) {}
 	/**
 	 * Negotiate the client's preferred character set.
 	 * 
 	 * > ***NOTE:***
-	 * > The first elemement of $supported character sets serves as a default if no character set matches.
+	 * > The first element of $supported character sets serves as a default if no character set matches.
 	 * 
 	 * @param array $supported List of supported content character sets.
+	 * @param array $result Out parameter recording negotiation results.
 	 * @return NULL|string NULL if negotiation fails.
 	 * 		 or string the negotiated character set.
 	 */
-	function negotiateCharset(array $supported) {}
+	function negotiateCharset(array $supported, array &$result = NULL) {}
 	/**
 	 * Negotiate the client's preferred MIME content type.
 	 * 
 	 * > ***NOTE:***
-	 * > The first elemement of $supported content types serves as a default if no content-type matches.
+	 * > The first element of $supported content types serves as a default if no content-type matches.
 	 * 
 	 * @param array $supported List of supported MIME content types.
+	 * @param array $result Out parameter recording negotiation results.
 	 * @return NULL|string NULL if negotiation fails.
 	 * 		 or string the negotiated content type.
 	 */
-	function negotiateContentType(array $supported) {}
+	function negotiateContentType(array $supported, array &$result = NULL) {}
 	/**
 	 * Negotiate the client's preferred encoding.
 	 * 
 	 * > ***NOTE:***
-	 * > The first elemement of $supported encodings serves as a default if no encoding matches.
+	 * > The first element of $supported encodings serves as a default if no encoding matches.
 	 * 
 	 * @param array $supported List of supported content encodings.
+	 * @param array $result Out parameter recording negotiation results.
 	 * @return NULL|string NULL if negotiation fails.
 	 * 		 or string the negotiated encoding.
 	 */
-	function negotiateEncoding(array $supported) {}
+	function negotiateEncoding(array $supported, array &$result = NULL) {}
 	/**
 	 * Negotiate the client's preferred language.
 	 * 
 	 * > ***NOTE:***
-	 * > The first elemement of $supported languages serves as a default if no language matches.
+	 * > The first element of $supported languages serves as a default if no language matches.
 	 * 
 	 * @param array $supported List of supported content languages.
+	 * @param array $result Out parameter recording negotiation results.
 	 * @return NULL|string NULL if negotiation fails.
 	 * 		 or string the negotiated language.
 	 */
-	function negotiateLanguage(array $supported) {}
+	function negotiateLanguage(array $supported, array &$result = NULL) {}
 	/**
 	 * Set the HTTP response code to send.
 	 * 
@@ -759,9 +770,13 @@ class Env  {
 	 * 
 	 * If $response_code is not 0, the response status code is updated accordingly.
 	 * 
+	 * @param string $header_name
+	 * @param mixed $header_value
+	 * @param int $response_code
+	 * @param bool $replace
 	 * @return bool Success.
 	 */
-	function setResponseHeader() {}
+	function setResponseHeader(string $header_name, $header_value = NULL, int $response_code = NULL, bool $replace = NULL) {}
 }
 /**
  * The http extension's Exception interface.
@@ -851,13 +866,14 @@ class Header implements \Serializable {
 	 * used instead.
 	 * 
 	 * > ***NOTE:***
-	 * > The first elemement of $supported serves as a default if no operand matches.
+	 * > The first element of $supported serves as a default if no operand matches.
 	 * 
 	 * @param array $supported The list of supported values to negotiate.
+	 * @param array $result Out parameter recording the negotiation results.
 	 * @return NULL|string NULL if negotiation fails.
 	 * 		 or string the closest match negotiated, or the default (first entry of $supported).
 	 */
-	function negotiate(array $supported) {}
+	function negotiate(array $supported, array &$result = NULL) {}
 	/**
 	 * Parse HTTP headers.
 	 * See also http\Header\Parser.
@@ -911,7 +927,7 @@ class Message implements \Countable, \Serializable, \Iterator {
 	 * @protected
 	 * @var int
 	 */
-	protected $type = http\Message::TYPE_NONE;
+	protected $type = \http\Message::TYPE_NONE;
 	/**
 	 * The message's body.
 	 * 
@@ -934,7 +950,7 @@ class Message implements \Countable, \Serializable, \Iterator {
 	 */
 	protected $requestUrl = "";
 	/**
-	 * The respose status phrase if the message is of type response.
+	 * The response status phrase if the message is of type response.
 	 * 
 	 * @protected
 	 * @var string
@@ -1035,7 +1051,7 @@ class Message implements \Countable, \Serializable, \Iterator {
 	 * See http\Message::setBody().
 	 * 
 	 * @throws \http\Exception\InvalidArgumentException
-	 * @throws \http\Exception\UnexpectedValueEcxeption
+	 * @throws \http\Exception\UnexpectedValueException
 	 * @return \http\Message\Body the message body.
 	 */
 	function getBody() {}
@@ -1056,7 +1072,7 @@ class Message implements \Countable, \Serializable, \Iterator {
 	 */
 	function getHeaders() {}
 	/**
-	 * Retreive the HTTP protocol version of the message.
+	 * Retrieve the HTTP protocol version of the message.
 	 * See http\Message::setHttpVersion().
 	 * 
 	 * @return string the HTTP protocol version, e.g. "1.0"; defaults to "1.1".
@@ -1072,6 +1088,9 @@ class Message implements \Countable, \Serializable, \Iterator {
 	 * * http\Message::getResponseStatus()
 	 * * http\Message::getRequestMethod()
 	 * * http\Message::getRequestUrl()
+	 * 
+	 * @return string|NULL string the HTTP message information.
+	 * 		 or NULL if the message is neither of type request nor response.
 	 */
 	function getInfo() {}
 	/**
@@ -1128,9 +1147,10 @@ class Message implements \Countable, \Serializable, \Iterator {
 	 * 
 	 * See http\Message::splitMultipartBody().
 	 * 
+	 * @param string $boundary A reference where the boundary string will be stored.
 	 * @return bool whether this is a message with a multipart "Content-Type".
 	 */
-	function isMultipart() {}
+	function isMultipart(string &$boundary = NULL) {}
 	/**
 	 * Implements Iterator.
 	 * See http\Message::current() and http\Message::rewind().
@@ -1299,20 +1319,16 @@ class Message implements \Countable, \Serializable, \Iterator {
 	 * Stream the message through a callback.
 	 * 
 	 * @param callable $callback The callback of the form function(http\Message $from, string $data).
-	 * @param int $offset Start to stream from this offset.
-	 * @param int $maxlen Stream at most $maxlen bytes, or all if $maxlen is less than 1.
 	 * @return \http\Message self.
 	 */
-	function toCallback(callable $callback, int $offset = 0, int $maxlen = 0) {}
+	function toCallback(callable $callback) {}
 	/**
 	 * Stream the message into stream $stream, starting from $offset, streaming $maxlen at most.
 	 * 
 	 * @param resource $stream The resource to write to.
-	 * @param int $offset The starting offset.
-	 * @param int $maxlen The maximum amount of data to stream. All content if less than 1.
 	 * @return \http\Message self.
 	 */
-	function toStream($stream, int $offset = 0, int $maxlen = 0) {}
+	function toStream($stream) {}
 	/**
 	 * Retrieve the message serialized to a string.
 	 * 
@@ -1363,6 +1379,10 @@ class Params implements \ArrayAccess {
 	 */
 	const PARSE_DEFAULT = 17;
 	/**
+	 * Parse backslash escaped (quoted) strings.
+	 */
+	const PARSE_ESCAPED = 1;
+	/**
 	 * Urldecode single units of parameters, arguments and values.
 	 */
 	const PARSE_URLENCODED = 4;
@@ -1395,28 +1415,28 @@ class Params implements \ArrayAccess {
 	 * @public
 	 * @var array
 	 */
-	public $param_sep = http\Params::DEF_PARAM_SEP;
+	public $param_sep = \http\Params::DEF_PARAM_SEP;
 	/**
 	 * The argument separator(s).
 	 * 
 	 * @public
 	 * @var array
 	 */
-	public $arg_sep = http\Params::DEF_ARG_SEP;
+	public $arg_sep = \http\Params::DEF_ARG_SEP;
 	/**
 	 * The value separator(s).
 	 * 
 	 * @public
 	 * @var array
 	 */
-	public $val_sep = http\Params::DEF_VAL_SEP;
+	public $val_sep = \http\Params::DEF_VAL_SEP;
 	/**
 	 * The modus operandi of the parser. See http\Params::PARSE_* constants.
 	 * 
 	 * @public
 	 * @var int
 	 */
-	public $flags = http\Params::PARSE_DEFAULT;
+	public $flags = \http\Params::PARSE_DEFAULT;
 	/**
 	 * Instantiate a new HTTP (header) parameter set.
 	 * 
@@ -1466,7 +1486,7 @@ class Params implements \ArrayAccess {
 	/**
 	 * Convenience method that simply returns http\Params::$params.
 	 * 
-	 * @return array of paramters.
+	 * @return array of parameters.
 	 */
 	function toArray() {}
 	/**
@@ -1525,6 +1545,12 @@ class QueryString implements \Serializable, \ArrayAccess, \IteratorAggregate {
 	 * @throws \http\Exception\BadQueryStringException
 	 */
 	function __construct($params = NULL) {}
+	/**
+	 * Get the string representation of the querystring (x-www-form-urlencoded).
+	 * 
+	 * @return string the x-www-form-urlencoded querystring.
+	 */
+	function __toString() {}
 	/**
 	 * Retrieve an querystring value.
 	 * 
@@ -1676,7 +1702,7 @@ class QueryString implements \Serializable, \ArrayAccess, \IteratorAggregate {
 	 */
 	function toArray() {}
 	/**
-	 * Get the string represenation of the querystring (x-www-form-urlencoded).
+	 * Get the string representation of the querystring (x-www-form-urlencoded).
 	 * 
 	 * @return string the x-www-form-urlencoded querystring.
 	 */
@@ -1759,7 +1785,7 @@ class Url  {
 	 */
 	const SANITIZE_PATH = 8192;
 	/**
-	 * Parse UTF-8 encododed multibyte sequences.
+	 * Parse UTF-8 encoded multibyte sequences.
 	 */
 	const PARSE_MBUTF8 = 131072;
 	/**
@@ -1884,7 +1910,7 @@ class Url  {
 	 * @throws \http\Exception\BadUrlException
 	 * @return \http\Url clone.
 	 */
-	function mod($parts, int $flags = http\Url::JOIN_PATH|http\Url::JOIN_QUERY|http\Url::SANITIZE_PATH) {}
+	function mod($parts, int $flags = \http\Url::JOIN_PATH|http\Url::JOIN_QUERY|http\Url::SANITIZE_PATH) {}
 	/**
 	 * Retrieve the URL parts as array.
 	 * 
@@ -1912,7 +1938,7 @@ const FEATURES = 4179869;
  *   e.g. "libcurl/7.50.0 OpenSSL/1.0.2h zlib/1.2.8 libidn/1.32 nghttp2/1.12.0".
  *   See http\Client\Curl\Versions namespace.
  */
-const VERSIONS = 'libcurl/7.64.0 OpenSSL/1.1.1b zlib/1.2.11 libidn2/2.0.5 libpsl/0.20.2 (+libidn2/2.0.5) libssh2/1.8.0 nghttp2/1.36.0 librtmp/2.3';
+const VERSIONS = 'libcurl/7.64.0 OpenSSL/1.1.1a zlib/1.2.11 libidn2/2.1.1 libpsl/0.20.2 (+libidn2/2.1.1) libssh2/1.8.0 nghttp2/1.36.0';
 /**
  * Use HTTP/1.0 protocol version.
  */
@@ -1922,9 +1948,13 @@ const HTTP_VERSION_1_0 = 1;
  */
 const HTTP_VERSION_1_1 = 2;
 /**
- * Use HTTP/2 protocol version. Available if libcurl is v7.33.0 or more recent and was built with nghttp2 support.
+ * Attempt to use HTTP/2 protocol version. Available if libcurl is v7.33.0 or more recent and was built with nghttp2 support.
  */
 const HTTP_VERSION_2_0 = 3;
+/**
+ * Attempt to use version 2 for HTTPS, version 1.1 for HTTP. Available if libcurl is v7.47.0 or more recent and was built with nghttp2 support.
+ */
+const HTTP_VERSION_2TLS = 4;
 /**
  * Use any HTTP protocol version.
  */
@@ -1960,7 +1990,7 @@ const SSL_VERSION_ANY = 0;
 /**
  * Use TLS SRP authentication. Available if libcurl is v7.21.4 or more recent and was built with gnutls or openssl with TLS-SRP support.
  */
-const TLS_AUTH_SRP = NULL;
+const TLSAUTH_SRP = 1;
 /**
  * Use IPv4 resolver.
  */
@@ -2081,7 +2111,7 @@ class Request extends \http\Message {
 	 * See http\Client\Request::setSslOptions(), http\Client\Request::setOptions() and http\Client\Curl\$ssl options.
 	 * 
 	 * @param array $ssl_options Add this SSL options.
-	 * @throws \http\Client\InvalidArgumentException
+	 * @throws \http\Exception\InvalidArgumentException
 	 * @return \http\Client\Request self.
 	 */
 	function addSslOptions(array $ssl_options = NULL) {}
@@ -2133,7 +2163,7 @@ class Request extends \http\Message {
 	 * > Only options specified prior enqueueing a request are applied to the request.
 	 * 
 	 * @param array $options The options to set.
-	 * @throws \http\Client\InvalidArgumentException
+	 * @throws \http\Exception\InvalidArgumentException
 	 * @return \http\Client\Request self.
 	 */
 	function setOptions(array $options = NULL) {}
@@ -2152,7 +2182,7 @@ class Request extends \http\Message {
 	 * See http\Client\Request::setOptions() and http\Client\Curl\$ssl options.
 	 * 
 	 * @param array $ssl_options Set SSL options to this array.
-	 * @throws \http\Client\InvalidArgumentException
+	 * @throws \http\Exception\InvalidArgumentException
 	 * @return \http\Client\Request self.
 	 */
 	function setSslOptions(array $ssl_options = NULL) {}
@@ -2352,7 +2382,7 @@ const CURL = '7.64.0';
 /**
  * Version string of the SSL/TLS library, e.g. "OpenSSL/1.0.2h".
  */
-const SSL = 'OpenSSL/1.1.1b';
+const SSL = 'OpenSSL/1.1.1a';
 /**
  * Version string of the zlib compression library, e.g. "1.2.8".
  */
@@ -2371,7 +2401,7 @@ namespace http\Encoding;
  */
 abstract class Stream  {
 	/**
-	 * Do no intermittend flushes.
+	 * Do no intermittent flushes.
 	 */
 	const FLUSH_NONE = 0;
 	/**
@@ -2420,6 +2450,21 @@ abstract class Stream  {
 }
 namespace http\Encoding\Stream;
 /**
+ * A [brotli](https://brotli.org) decoding stream.
+ * 
+ * > ***NOTE:***
+ * > This class has been added in v3.2.0.
+ */
+class Debrotli extends \http\Encoding\Stream {
+	/**
+	 * Decode brotli encoded data.
+	 * 
+	 * @param string $data The data to uncompress.
+	 * @return string the uncompressed data.
+	 */
+	function decode(string $data) {}
+}
+/**
  * A stream decoding data encoded with chunked transfer encoding.
  */
 class Dechunk extends \http\Encoding\Stream {
@@ -2434,7 +2479,7 @@ class Dechunk extends \http\Encoding\Stream {
 	 * 		 or string the truncated decoded data.
 	 * 		 or false if $data cannot be decoded.
 	 */
-	function decode(string $data, int $decoded_len = 0) {}
+	function decode(string $data, int &$decoded_len = 0) {}
 }
 /**
  * A deflate stream supporting deflate, zlib and gzip encodings.
@@ -2510,6 +2555,58 @@ class Deflate extends \http\Encoding\Stream {
 	function encode(string $data, int $flags = 0) {}
 }
 /**
+ * A [brotli](https://brotli.org) encoding stream.
+ * 
+ * > ***NOTE:***
+ * > This class has been added in v3.2.0.
+ */
+class Enbrotli extends \http\Encoding\Stream {
+	/**
+	 * Default compression level.
+	 */
+	const LEVEL_DEF = 4;
+	/**
+	 * Least compression level.
+	 */
+	const LEVEL_MIN = 1;
+	/**
+	 * Greatest compression level.
+	 */
+	const LEVEL_MAX = 11;
+	/**
+	 * Default window bits.
+	 */
+	const WBITS_DEF = 352;
+	/**
+	 * Minimum window bits.
+	 */
+	const WBITS_MIN = 160;
+	/**
+	 * Maximum window bits.
+	 */
+	const WBITS_MAX = 384;
+	/**
+	 * Default compression mode.
+	 */
+	const MODE_GENERIC = 0;
+	/**
+	 * Compression mode for UTF-8 formatted text.
+	 */
+	const MODE_TEXT = 4096;
+	/**
+	 * Compression mode used in WOFF 2.0.
+	 */
+	const MODE_FONT = 8192;
+	/**
+	 * Encode data with brotli encoding.
+	 * 
+	 * @param string $data The data to compress.
+	 * @param int $flags Any compression tuning flags. See http\Encoding\Stream\Enbrotli and http\Encoding\Stream constants.
+	 * @return string the compressed data.
+	 */
+	function encode(string $data, int $flags = 0) {}
+}
+/**
  * A inflate stream supporting deflate, zlib and gzip encodings.
  */
 class Inflate extends \http\Encoding\Stream {
@@ -2559,7 +2656,7 @@ class Request extends \http\Message {
 	/**
 	 * Create an instance of the server's current HTTP request.
 	 * 
-	 * Upon construction, the http\Env\Request acquires http\QueryString instances of  query paramters ($\_GET) and form parameters ($\_POST).
+	 * Upon construction, the http\Env\Request acquires http\QueryString instances of query parameters ($\_GET) and form parameters ($\_POST).
 	 * 
 	 * It also compiles an array of uploaded files ($\_FILES) more comprehensive than the original $\_FILES array, see http\Env\Request::getFiles() for that matter.
 	 * 
@@ -2786,11 +2883,11 @@ class Response extends \http\Message {
 	/**
 	 * Set the MIME content type of the response.
 	 * 
-	 * @param string $conten_type The response's content type.
-	 * @throws \http\Env\InvalidArgumentException
+	 * @param string $content_type The response's content type.
+	 * @throws \http\Exception\InvalidArgumentException
 	 * @return \http\Env\Response self.
 	 */
-	function setContentType(string $conten_type) {}
+	function setContentType(string $content_type) {}
 	/**
 	 * Add cookies to the response to send.
 	 * 
@@ -2955,20 +3052,22 @@ class Parser  {
 	 * 
 	 * @param string $data The (part of the) header to parse.
 	 * @param int $flags Any combination of [parser flags](http/Header/Parser#Parser.flags:).
+	 * @param array $header Successfully parsed headers.
 	 * @throws \http\Exception\InvalidArgumentException
 	 * @return int http\Header\Parser::STATE_* constant.
 	 */
-	function parse(string $data, int $flags) {}
+	function parse(string $data, int $flags, array &$header = NULL) {}
 	/**
 	 * Parse a stream.
 	 * 
-	 * @param stream $resource The header stream to parse from.
+	 * @param resource $stream The header stream to parse from.
 	 * @param int $flags Any combination of [parser flags](http/Header/Parser#Parser.flags:).
+	 * @param array $headers The headers parsed.
 	 * @throws \http\Exception\InvalidArgumentException
 	 * @throws \http\Exception\UnexpectedValueException
 	 * @return int http\Header\Parser::STATE_* constant.
 	 */
-	function stream($resource, int $flags) {}
+	function stream($stream, int $flags, array &$headers) {}
 }
 namespace http\Message;
 /**
@@ -3101,7 +3200,7 @@ class Body implements \Serializable {
 	 */
 	function toCallback(callable $callback, int $offset = 0, int $maxlen = 0) {}
 	/**
-	 * Stream the message body into antother stream $stream, starting from $offset, streaming $maxlen at most.
+	 * Stream the message body into another stream $stream, starting from $offset, streaming $maxlen at most.
 	 * 
 	 * @param resource $stream The resource to write to.
 	 * @param int $offset The starting offset.
@@ -3171,7 +3270,7 @@ class Parser  {
 	 */
 	const STATE_BODY_DUMB = 4;
 	/**
-	 * Reading body as indicated by `Content-Lenght` or `Content-Range`.
+	 * Reading body as indicated by `Content-Length` or `Content-Range`.
 	 */
 	const STATE_BODY_LENGTH = 5;
 	/**
@@ -3182,6 +3281,10 @@ class Parser  {
 	 * Finished parsing the body.
 	 */
 	const STATE_BODY_DONE = 7;
+	/**
+	 * Updating Content-Length based on body size.
+	 */
+	const STATE_UPDATE_CL = 8;
 	/**
 	 * Finished parsing the message.
 	 * 
@@ -3202,18 +3305,20 @@ class Parser  {
 	 * 
 	 * @param string $data The (part of the) message to parse.
 	 * @param int $flags Any combination of [parser flags](http/Message/Parser#Parser.flags:).
+	 * @param \http\Message $message The current state of the message parsed.
 	 * @throws \http\Exception\InvalidArgumentException
 	 * @return int http\Message\Parser::STATE_* constant.
 	 */
-	function parse(string $data, int $flags) {}
+	function parse(string $data, int $flags, \http\Message &$message) {}
 	/**
 	 * Parse a stream.
 	 * 
-	 * @param stream $resource The message stream to parse from.
+	 * @param resource $stream The message stream to parse from.
 	 * @param int $flags Any combination of [parser flags](http/Message/Parser#Parser.flags:).
+	 * @param \http\Message $message The current state of the message parsed.
 	 * @throws \http\Exception\InvalidArgumentException
 	 * @throws \http\Exception\UnexpectedValueException
 	 * @return int http\Message\Parser::STATE_* constant.
 	 */
-	function stream($resource, int $flags) {}
+	function stream($stream, int $flags, \http\Message &$message) {}
 }

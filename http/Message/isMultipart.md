@@ -7,7 +7,7 @@ See http\Message::splitMultipartBody().
 
 ## Params:
 
-* Optional reference string &$boundary = NULL  
+* Optional string &$boundary = NULL  
   A reference where the boundary string will be stored.
 
 ## Returns:

@@ -2,7 +2,7 @@
 
 Retrieve a list of all known HTTP response status.
 
-## Parameters:
+## Params:
 
 None.
 

@@ -8,4 +8,4 @@ None.
 
 ## Returns:
 
-* array of paramters.
+* array of parameters.

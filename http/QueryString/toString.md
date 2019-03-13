@@ -1,6 +1,6 @@
 # string http\QueryString::toString()
 
-Get the string represenation of the querystring (x-www-form-urlencoded).
+Get the string representation of the querystring (x-www-form-urlencoded).
 
 ## Params:
 

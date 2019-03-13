@@ -2,7 +2,7 @@
 
 Retrieve one or all headers of the current HTTP request.
 
-## Parameters:
+## Params:
 
 * Optional string $header_name  
   The key of a header to retrieve.

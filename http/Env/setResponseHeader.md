@@ -6,7 +6,7 @@ If no $header_value is specified, or $header_value is NULL, then a previously se
 
 If $response_code is not 0, the response status code is updated accordingly.
 
-## Parameters:
+## Params:
 
 * string $header_name, the name of the response header.
 * Optional mixed $header_value, the header value.

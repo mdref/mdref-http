@@ -40,6 +40,12 @@ The following system libraries are optional and provide additional features:
 	Minimum version: 7.18.2  
 	Install on Debian: `apt-get install libcurl4-openssl-dev`  
 
+=libbrotli=
+	Provides brotli encoding.
+	Configure: `--with-http-libbrotli-dir`
+	Minimum version: 1.0
+	Install on Debian: `apt-get install libbrotli-dev`
+ 
 =libevent=
 	Internal event loop support for the HTTP client.  
 	Configure: `--with-http-libevent-dir`  
@@ -151,3 +157,5 @@ The http extension registers the ```http.*``` namespace for its stream filters. 
 	* Added idnkit-2 IDNA2008 support.
 	* Added ICU IDNA2008 support.
 	* Added explicit configuration options for each IDNA library.
+0. v3.2.0
+	* Added brotli encoding support.

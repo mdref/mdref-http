@@ -2,7 +2,7 @@
 
 Get the HTTP response code to send.
 
-## Parameters:
+## Params:
 
 None.
 

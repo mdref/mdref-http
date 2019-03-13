@@ -2,7 +2,7 @@
 
 Get one or all HTTP response headers to be sent.
 
-## Parameters:
+## Params:
 
 * Optional string $header_name  
   The name of the response header to retrieve.

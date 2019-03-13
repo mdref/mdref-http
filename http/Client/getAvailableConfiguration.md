@@ -10,7 +10,7 @@ None.
 
 ## Returns:
 
-* array, list of key/value pairs of available configuarion options and their default values.
+* array, list of key/value pairs of available configuration options and their default values.
 
 ## Throws:
 

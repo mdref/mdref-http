@@ -3,7 +3,7 @@
 Generic negotiator. For specific client negotiation see http\Env::negotiateContentType() and related methods.
 
 > ***NOTE:***  
-> The first elemement of $supported serves as a default if no operand matches.
+> The first element of $supported serves as a default if no operand matches.
 
 ## Params:
 
@@ -13,7 +13,7 @@ Generic negotiator. For specific client negotiation see http\Env::negotiateConte
   List of supported negotiation operands.
 * Optional string $prim_typ_sep  
   A "primary type separator", i.e. that would be a hyphen for content language negotiation (en-US, de-DE, etc.).
-* Optional reference array &$result  
+* Optional array &$result  
   Out parameter recording negotiation results.
   
 ## Returns:

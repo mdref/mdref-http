@@ -1,6 +1,6 @@
 # string http\Message::getHttpVersion()
 
-Retreive the HTTP protocol version of the message.
+Retrieve the HTTP protocol version of the message.
 See http\Message::setHttpVersion().
 
 ## Params:

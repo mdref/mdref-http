@@ -14,7 +14,7 @@ See http\Message::setInfo and also:
 
 None.
 
-## Return:
+## Returns:
 
 * string, the HTTP message information.
 * NULL, if the message is neither of type request nor response.

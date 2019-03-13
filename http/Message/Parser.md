@@ -33,11 +33,13 @@ The parser which is underlying http\Message.
 * STATE_BODY_DUMB  
   Soaking up all input as body.
 * STATE_BODY_LENGTH  
-  Reading body as indicated by `Content-Lenght` or `Content-Range`.
+  Reading body as indicated by `Content-Length` or `Content-Range`.
 * STATE_BODY_CHUNKED  
   Parsing `chunked` encoded body.
 * STATE_BODY_DONE  
   Finished parsing the body.
+* STATE_UPDATE_CL  
+  Updating Content-Length based on body size.
 * STATE_DONE  
   Finished parsing the message.
 

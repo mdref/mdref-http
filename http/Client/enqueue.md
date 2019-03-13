@@ -5,7 +5,7 @@ If the optional callback $cb returns true, the request will be automatically deq
 
 > ***Note:***  
 > The http\Client\Response object resulting from the request is always stored 
-> internally to be retreived at a later time, __even__ when $cb is used.
+> internally to be retrieved at a later time, __even__ when $cb is used.
 > 
 > If you are about to send a lot of requests and do __not__ need the response
 > after executing the callback, you can use http\Client::getResponse() within
@@ -18,7 +18,7 @@ See http\Client::dequeue() and http\Client::send().
 
 * http\Client\Request $request  
   The request to enqueue.
-* Optional callable $cb  
+* Optional callable $cb as function(\http\Response $response) : ?bool  
   A callback to automatically call when the request has finished.
 
 ## Returns:

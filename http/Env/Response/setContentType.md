@@ -4,7 +4,7 @@ Set the MIME content type of the response.
 
 ## Params:
 
-* string $conten_type  
+* string $content_type  
   The response's content type.
 
 ## Returns:
@@ -13,4 +13,4 @@ Set the MIME content type of the response.
 
 ## Throws:
 
-* http\Env\InvalidArgumentException
+* http\Exception\InvalidArgumentException

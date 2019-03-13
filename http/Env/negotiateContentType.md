@@ -1,15 +1,15 @@
-# static string http\Env::negotiateContentType(array $supported[, array &$result)
+# static string http\Env::negotiateContentType(array $supported[, array &$result])
 
 Negotiate the client's preferred MIME content type.
 
 > ***NOTE:***  
-> The first elemement of $supported content types serves as a default if no content-type matches.
+> The first element of $supported content types serves as a default if no content-type matches.
 
 ## Params:
 
 * array $supported  
   List of supported MIME content types.
-* Optional reference array &$result  
+* Optional array &$result  
   Out parameter recording negotiation results.
   
 ## Returns:

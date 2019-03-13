@@ -19,4 +19,4 @@ Request specific options override general options which were set in the client.
 
 ## Throws:
 
-* http\Client\InvalidArgumentException
+* http\Exception\InvalidArgumentException

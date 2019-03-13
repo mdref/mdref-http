@@ -24,7 +24,7 @@ See http\Client\Request and http\Client\Response, as well as http\Env\Request an
 * protected string $requestUrl = ""  
   The request url if the message is of type request.
 * protected string $responseStatus = ""  
-  The respose status phrase if the message is of type response.
+  The response status phrase if the message is of type response.
 * protected int $responseCode = 0  
   The response code if the message is of type response.
 * protected string $httpVersion = NULL  

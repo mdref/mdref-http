@@ -1,4 +1,4 @@
-# array http\QueryString::getArray(string $name[, mixed $defval = NULL[, bool $delete = false)
+# array http\QueryString::getArray(string $name[, mixed $defval = NULL[, bool $delete = false]])
 
 Retrieve an array value with at offset $name.
 

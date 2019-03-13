@@ -1,8 +1,8 @@
 # static http\Message\Body http\Env::getRequestBody([string $body_class_name])
 
-Retreive the current HTTP request's body.
+Retrieve the current HTTP request's body.
 
-## Parameters:
+## Params:
 
 * Optional string $body_class_name  
   A user class extending http\Message\Body.
