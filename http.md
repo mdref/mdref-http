@@ -41,10 +41,10 @@ The following system libraries are optional and provide additional features:
 	Install on Debian: `apt-get install libcurl4-openssl-dev`  
 
 =libbrotli=
-	Provides brotli encoding.
-	Configure: `--with-http-libbrotli-dir`
-	Minimum version: 1.0
-	Install on Debian: `apt-get install libbrotli-dev`
+	Provides brotli encoding.  
+	Configure: `--with-http-libbrotli-dir`  
+	Minimum version: 1.0  
+	Install on Debian: `apt-get install libbrotli-dev`  
  
 =libevent=
 	Internal event loop support for the HTTP client.  
