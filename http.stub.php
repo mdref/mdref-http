@@ -289,7 +289,7 @@ class Client implements \SplSubject, \Countable {
 	 * @param \http\Client\Request $request The request to probe for transfer info.
 	 * @throws \http\Exception\InvalidArgumentException
 	 * @throws \http\Exception\UnexpectedValueException
-	 * @return  stdClass instance holding transfer related information.
+	 * @return object stdClass instance holding transfer related information.
 	 */
 	function getTransferInfo(\http\Client\Request $request) {}
 	/**
@@ -1447,7 +1447,7 @@ class Params implements \ArrayAccess {
 	 * Implements ArrayAccess.
 	 * 
 	 * @param string $name The offset to retrieve.
-	 * @return  contents at offset.
+	 * @return mixed contents at offset.
 	 */
 	function offsetGet($name) {}
 	/**
@@ -3073,7 +3073,7 @@ class Body implements \Serializable {
 	/**
 	 * Retrieve the underlying stream resource.
 	 * 
-	 * @return  the underlying stream.
+	 * @return resource the underlying stream.
 	 */
 	function getResource() {}
 	/**
