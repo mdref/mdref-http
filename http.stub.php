@@ -1503,7 +1503,7 @@ class QueryString implements \Serializable, \ArrayAccess, \IteratorAggregate {
 	/**
 	 * Cast requested value to bool.
 	 */
-	const TYPE_BOOL = 16;
+	const TYPE_BOOL = 17;
 	/**
 	 * Cast requested value to int.
 	 */
@@ -1926,19 +1926,22 @@ class Url  {
 }
 /**
  * The http\Client\Curl namespace holds option value constants specific to the curl driver of the http\Client.
+ * 
+ * Head down for the [list of available request options](http/Client/Curl#Options:) as well as the
+ * [list of available client configuration options](http/Client/Curl#Configuration:).
  */
 namespace http\Client\Curl;
 /**
  * Bitmask of available libcurl features.
  *   See http\Client\Curl\Features namespace.
  */
-const FEATURES = 4179869;
+const FEATURES = 88065949;
 /**
  * List of library versions of or linked into libcurl,
  *   e.g. "libcurl/7.50.0 OpenSSL/1.0.2h zlib/1.2.8 libidn/1.32 nghttp2/1.12.0".
  *   See http\Client\Curl\Versions namespace.
  */
-const VERSIONS = 'libcurl/7.64.0 OpenSSL/1.1.1d zlib/1.2.11 libidn2/2.0.5 libpsl/0.20.2 (+libidn2/2.0.5) libssh2/1.8.0 nghttp2/1.36.0 librtmp/2.3';
+const VERSIONS = 'libcurl/7.75.0 OpenSSL/1.1.1j zlib/1.2.11 zstd/1.4.8 libidn2/2.3.0 libpsl/0.21.1 (+libidn2/2.3.0) libssh2/1.9.0 nghttp2/1.41.0';
 /**
  * Use HTTP/1.0 protocol version.
  */
@@ -1952,25 +1955,37 @@ const HTTP_VERSION_1_1 = 2;
  */
 const HTTP_VERSION_2_0 = 3;
 /**
- * Attempt to use version 2 for HTTPS, version 1.1 for HTTP. Available if libcurl is v7.47.0 or more recent and was built with nghttp2 support.
+ * Attempt to use version 2 for HTTPS, version 1.1 for HTTP. Available if libcurl is v7.47.0 or more recent and was built with http2 support.
  */
 const HTTP_VERSION_2TLS = 4;
+/**
+ * Declare prior knowledge that the server supports plain (non-TLS) HTTP/2. Available if libcurl is v7.49.0 or more recent and was built with http2 support.
+ */
+const HTTP_VERSION_2_PRIOR_KNOWLEDGE = 5;
+/**
+ * Force usage of HTTP/3. See also http\Client\Curl::$altsvc. Available if libcurl is v7.66.0 or more recent.
+ */
+const HTTP_VERSION_3 = 30;
 /**
  * Use any HTTP protocol version.
  */
 const HTTP_VERSION_ANY = 0;
 /**
- * Use TLS v1.0 encryption.
+ * Use TLS v1.0 encryption. Available if libcurl is v7.34.0 or more recent.
  */
 const SSL_VERSION_TLSv1_0 = 4;
 /**
- * Use TLS v1.1 encryption.
+ * Use TLS v1.1 encryption. Available if libcurl is v7.34.0 or more recent.
  */
 const SSL_VERSION_TLSv1_1 = 5;
 /**
- * Use TLS v1.2 encryption.
+ * Use TLS v1.2 encryption. Available if libcurl is v7.34.0 or more recent.
  */
 const SSL_VERSION_TLSv1_2 = 6;
+/**
+ * Use TLS v1.3 encryption. Available if libcurl is v7.52.0 or more recent.
+ */
+const SSL_VERSION_TLSv1_3 = 7;
 /**
  * Use any TLS v1 encryption.
  */
@@ -1988,6 +2003,26 @@ const SSL_VERSION_SSLv3 = 3;
  */
 const SSL_VERSION_ANY = 0;
 /**
+ * Use max default encryption. To be bitwise ORed to a http\Client\Curl\SSL_VERSION_ constant. Available if libcurl is v7.54.0 or more recent.
+ */
+const SSL_VERSION_MAX_DEFAULT = 65536;
+/**
+ * Use upt to TLS v1.0 encryption. To be bitwise ORed to a http\Client\Curl\SSL_VERSION_ constant. Available if libcurl is v7.54.0 or more recent.
+ */
+const SSL_VERSION_MAX_TLSv1_0 = 262144;
+/**
+ * Use up to TLS v1.1 encryption. To be bitwise ORed to a http\Client\Curl\SSL_VERSION_ constant. Available if libcurl is v7.54.0 or more recent.
+ */
+const SSL_VERSION_MAX_TLSv1_1 = 327680;
+/**
+ * Use up to TLS v1.2 encryption. To be bitwise ORed to a http\Client\Curl\SSL_VERSION_ constant. Available if libcurl is v7.54.0 or more recent.
+ */
+const SSL_VERSION_MAX_TLSv1_2 = 393216;
+/**
+ * Use up to TLS v1.3 encryption. To be bitwise ORed to a http\Client\Curl\SSL_VERSION_ constant. Available if libcurl is v7.54.0 or more recent.
+ */
+const SSL_VERSION_MAX_TLSv1_3 = 458752;
+/**
  * Use TLS SRP authentication. Available if libcurl is v7.21.4 or more recent and was built with gnutls or openssl with TLS-SRP support.
  */
 const TLSAUTH_SRP = 1;
@@ -2003,6 +2038,10 @@ const IPRESOLVE_V6 = 2;
  * Use any resolver.
  */
 const IPRESOLVE_ANY = 0;
+/**
+ * Don't use authentication.
+ */
+const AUTH_NONE = 0;
 /**
  * Use Basic authentication.
  */
@@ -2028,6 +2067,14 @@ const AUTH_GSSNEG = 4;
  */
 const AUTH_SPNEGO = 4;
 /**
+ * Bearer authentication. Set bearer with http\Client\Curl::$xoauth2_bearer request option. Available if libcurl is v7.61.0 or more recent.
+ */
+const AUTH_BEARER = 64;
+/**
+ * Use AWS SIGv4 authentication. Available if libcurl is v7.75.0 or more recent.
+ */
+const AUTH_AWS_SIGV4 = NULL;
+/**
  * Use any authentication.
  */
 const AUTH_ANY = -17;
@@ -2038,11 +2085,11 @@ const PROXY_SOCKS4 = 4;
 /**
  * Use SOCKSv4a proxy protocol.
  */
-const PROXY_SOCKS4A = 5;
+const PROXY_SOCKS4A = 6;
 /**
  * Use SOCKS5h proxy protocol.
  */
-const PROXY_SOCKS5_HOSTNAME = 5;
+const PROXY_SOCKS5_HOSTNAME = 7;
 /**
  * Use SOCKS5 proxy protoccol.
  */
@@ -2071,6 +2118,30 @@ const POSTREDIR_303 = 4;
  * Keep POSTing on any redirect. Available if libcurl is v7.19.1 or more recent.
  */
 const POSTREDIR_ALL = 7;
+/**
+ * Do only read from but not write to the Alt-Svc cache file. Available if libcurl is v7.64.1 or more recent.
+ */
+const ALTSVC_READONLYFILE = 4;
+/**
+ * Accept alternative services offered over HTTP/1.1. Available if libcurl is v7.64.1 or more recent.
+ */
+const ALTSVC_H1 = 8;
+/**
+ * Accept alternative services offered over HTTP/2. Available if libcurl is v7.64.1 or more recent.
+ */
+const ALTSVC_H2 = 16;
+/**
+ * Accept alternative services offered over HTTP/3. Available if libcurl is v7.64.1 or more recent.
+ */
+const ALTSVC_H3 = 32;
+/**
+ * Enable the cache. Available if libcurl is v7.74.0 or more recent.
+ */
+const HSTS_ENABLE = 1;
+/**
+ * Do only read from but not write to the HSTS cache file. Available if libcurl is v7.74.0 or more recent.
+ */
+const HSTS_READONLYFILE = 2;
 namespace http\Client;
 /**
  * The http\Client\Request class provides an HTTP message implementation tailored to represent a request message to be sent by the client.
@@ -2370,19 +2441,16 @@ const TLSAUTH_SRP = 16384;
 const UNIX_SOCKETS = 524288;
 /**
  * CURL version constants.
- * 
- * > ***NOTE:***
- * > These constants have been added in v2.6.0, resp. v3.1.0.
  */
 namespace http\Client\Curl\Versions;
 /**
  * Version string of libcurl, e.g. "7.50.0".
  */
-const CURL = '7.64.0';
+const CURL = '7.75.0';
 /**
  * Version string of the SSL/TLS library, e.g. "OpenSSL/1.0.2h".
  */
-const SSL = 'OpenSSL/1.1.1d';
+const SSL = 'OpenSSL/1.1.1j';
 /**
  * Version string of the zlib compression library, e.g. "1.2.8".
  */
@@ -2394,7 +2462,39 @@ const ARES = NULL;
 /**
  * Version string of the IDN library, e.g. "1.32".
  */
-const IDN = NULL;
+const IDN = '2.3.0';
+/**
+ * Version string of the iconv library. Added in v4.1.0.
+ */
+const ICONV = '';
+/**
+ * Version string of the brotli library. Added in v4.1.0. Available if libcurl is v7.57.0 or more recent.
+ */
+const BROTLI = NULL;
+/**
+ * Version string of nghttp2. Added in v4.1.0. Available if libcurl is v7.66.0 or more recent.
+ */
+const NGHTTP2 = '1.41.0';
+/**
+ * Version string of quiche/nghttp3. Added in v4.1.0. Available if libcurl is v7.66.0 or more recent.
+ */
+const QUIC = NULL;
+/**
+ * Default path to the certificate bundle file. Added in v4.1.0. Available if libcurl is v7.70.0 or more recent.
+ */
+const CAINFO = '/etc/ssl/certs/ca-certificates.crt';
+/**
+ * Default path to the certificate bundle directory. Added in v4.1.0. Available if libcurl is v7.70.0 or more recent.
+ */
+const CAPATH = NULL;
+/**
+ * Version string of the zstd library. Added in v4.1.0. Available if libcurl is v7.72.0 or more recent.
+ */
+const ZSTD = '1.4.8';
+/**
+ * Version string of the hyper library. Added in v4.1.0. Available if libcurl is v7.75.0 or more recent.
+ */
+const HYPER = NULL;
 namespace http\Encoding;
 /**
  * Base class for encoding stream implementations.
@@ -2564,39 +2664,39 @@ class Enbrotli extends \http\Encoding\Stream {
 	/**
 	 * Default compression level.
 	 */
-	const LEVEL_DEF = NULL;
+	const LEVEL_DEF = 4;
 	/**
 	 * Least compression level.
 	 */
-	const LEVEL_MIN = NULL;
+	const LEVEL_MIN = 1;
 	/**
 	 * Greatest compression level.
 	 */
-	const LEVEL_MAX = NULL;
+	const LEVEL_MAX = 11;
 	/**
 	 * Default window bits.
 	 */
-	const WBITS_DEF = NULL;
+	const WBITS_DEF = 352;
 	/**
 	 * Minimum window bits.
 	 */
-	const WBITS_MIN = NULL;
+	const WBITS_MIN = 160;
 	/**
 	 * Maximum window bits.
 	 */
-	const WBITS_MAX = NULL;
+	const WBITS_MAX = 384;
 	/**
 	 * Default compression mode.
 	 */
-	const MODE_GENERIC = NULL;
+	const MODE_GENERIC = 0;
 	/**
 	 * Compression mode for UTF-8 formatted text.
 	 */
-	const MODE_TEXT = NULL;
+	const MODE_TEXT = 4096;
 	/**
 	 * Compression mode used in WOFF 2.0.
 	 */
-	const MODE_FONT = NULL;
+	const MODE_FONT = 8192;
 	/**
 	 * Encode data with brotli encoding.
 	 * 

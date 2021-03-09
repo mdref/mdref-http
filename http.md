@@ -95,7 +95,7 @@ There are usually different styles of SSL support for libcurl available, so you 
 This extension unconditionally depends on the pre-loaded presence of the following PHP extensions:
 
 * raphf
-* propro
+* propro (only until < 4.0.0, resp. PHP 8)
 * spl
 
 
@@ -109,7 +109,7 @@ Please ensure that all extension on which pecl/http depends, are loaded before i
 
 	; obligatory deps
 	extension = raphf.so
-	extension = propro.so
+	extension = propro.so (PHP < 8.0, ext-http < 3.0 only)
 
 	; if shared deps were enabled
 	extension = hash.so
@@ -119,12 +119,6 @@ Please ensure that all extension on which pecl/http depends, are loaded before i
 	; finally load pecl/http
 	extension = http.so
 
-## Conflicts:
-
-pecl/http-v2 conflicts with the following extensions:
-
-* http-v1
-* event (only until <= 2.0.3)
 
 ## INI Directives:
 
