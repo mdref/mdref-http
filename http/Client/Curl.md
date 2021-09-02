@@ -383,6 +383,7 @@ The option names used here are more or less derived from the corresponding CURLO
 * array $proxy_ssl  
   Subarray of SSL related options to use for the proxy:  
   > See the respective $ssl options above for descriptions.  
+
   * string $cert  
     Available if libcurl is v7.52.0 or more recent.
   * string $certtype  
