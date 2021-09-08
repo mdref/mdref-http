@@ -23,8 +23,8 @@ pecl/http depends on a number of system libraries and PHP extensions for special
 
 The following system libraries are required to build this extension:
 
-=zlib=
-	Provides gzip/zlib/deflate encoding.  
+zlib
+:	Provides gzip/zlib/deflate encoding.  
 	Configure: `--with-http-zlib-dir`  
 	Minimum version: 1.2.0.4  
 	Install on Debian: `apt-get install zlib1g-dev`
@@ -34,50 +34,50 @@ The following system libraries are required to build this extension:
 
 The following system libraries are optional and provide additional features:
 
-=libcurl=
-	Provides HTTP request functionality.  
+libcurl
+:	Provides HTTP request functionality.  
 	Configure: `--with-http-libcurl-dir`  
 	Minimum version: 7.18.2  
 	Install on Debian: `apt-get install libcurl4-openssl-dev`  
 
-=libbrotli=
-	Provides brotli encoding.  
+libbrotli
+:	Provides brotli encoding.  
 	Configure: `--with-http-libbrotli-dir`  
 	Minimum version: 1.0  
 	Install on Debian: `apt-get install libbrotli-dev`  
  
-=libevent=
-	Internal event loop support for the HTTP client.  
+libevent
+:	Internal event loop support for the HTTP client.  
 	Configure: `--with-http-libevent-dir`  
 	Minimum version: none  
 	Install on Debian: `apt-get install libevent-dev`
 
-=libicu=
-	Provides IDNA2003 and/or IDNA2008 support in URLs.  
+libicu
+:	Provides IDNA2003 and/or IDNA2008 support in URLs.  
 	Configure: `--with-http-libicu-dir`  
 	Minimum version: none  
 	Install on Debian: `apt-get install libicu-dev`
 
-=libidn=
-	Provides IDNA2003 support in URLs.  
+libidn
+:	Provides IDNA2003 support in URLs.  
 	Configure: `--with-http-libidn-dir`  
 	Minimum version: none  
 	Install on Debian: `apt-get install libidn11-dev`
 
-=libidn2=
-	Provides IDNA2008 support in URLs.  
+libidn2
+:	Provides IDNA2008 support in URLs.  
 	Configure: `--with-http-libidn2-dir`  
 	Minimum version: none  
 	Install on Debian: `apt-get install libidn2-0-dev`
 
-=libidnkit=
-	Provides IDNA2003 support in URLs. Conflicts with libidnkit2.  
+libidnkit
+:	Provides IDNA2003 support in URLs. Conflicts with libidnkit2.  
 	Configure: `--with-http-libidnkit-dir`  
 	Minimum version: none  
 	Install on Debian: N/A
 
-=libidnkit2=
-	Provides IDNA2008 support in URLs. Conflicts with libidnkit.  
+libidnkit2
+:	Provides IDNA2008 support in URLs. Conflicts with libidnkit.  
 	Configure: `--with-http-libidnkit2-dir`  
 	Minimum version: none  
 	Install on Debian: N/A
